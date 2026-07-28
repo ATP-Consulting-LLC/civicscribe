@@ -173,6 +173,7 @@ cost when used.
 | `src/lib/fixtures/` | Fixture council/planning transcripts + WAV synth |
 | `src/app/` | Pages + API routes (App Router) |
 | `scripts/` | `worker.ts` (tick poller), `seed.ts` (demo data) |
+| `recorder/` | Desktop recorder: local no-bot capture for public meetings ([docs](docs/recorder.md)). Separate Electron package, excluded from the deploy |
 | `supabase/migrations/` | Postgres schema (FTS, job queue, `claim_next_job()`) |
 | `DECISIONS.md` | Judgment calls made during the build |
 | `FINAL_REPORT.md` | Build wrap-up: what exists, limitations, mock→live checklist |

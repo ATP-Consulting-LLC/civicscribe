@@ -41,8 +41,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# local mock-mode data
+# local mock-mode data (any .data* working dir, however it is suffixed)
 .data/
+.data*/
 /test-results/
 /playwright-report/
 .data-e2e/
