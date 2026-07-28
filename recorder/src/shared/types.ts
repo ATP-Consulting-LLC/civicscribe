@@ -23,6 +23,9 @@ export interface TranscriptTurn {
   startMs: number;
   endMs: number;
   final: boolean;
+  /** AssemblyAI speaker label ("A", "B", "UNKNOWN"...) when diarization is on.
+   *  Null when unavailable; the server falls back to a generic label. */
+  speaker: string | null;
 }
 
 export type RecorderPhase =
