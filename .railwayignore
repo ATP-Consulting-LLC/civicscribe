@@ -12,3 +12,7 @@ node_modules
 .data-e2e
 .data-probe
 test-results
+
+# The desktop recorder is a separate Electron package that runs on an operator's
+# machine. It must never enter the server build (it would drag Electron in).
+recorder

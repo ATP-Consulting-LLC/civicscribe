@@ -1,0 +1,22 @@
+{
+  "name": "civicscribe-recorder",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktop recorder for public meetings - captures system or mic audio locally, no bot in the call.",
+  "main": "dist/electron/main.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.main.json && tsc -p tsconfig.renderer.json && node scripts/copy-static.mjs",
+    "start": "npm run build && electron .",
+    "typecheck": "tsc -p tsconfig.main.json --noEmit && tsc -p tsconfig.renderer.json --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "electron": "^31.3.0",
+    "typescript": "^5",
+    "vitest": "^4.1.8"
+  }
+}
