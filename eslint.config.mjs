@@ -18,6 +18,10 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      // The desktop recorder is a separate Electron package with its own
+      // tsconfigs, its own vitest, and legitimate CommonJS (the preload script
+      // must be CJS). Linting it under the Next app's rules is a category error.
+      "recorder/**",
     ],
   },
 ];

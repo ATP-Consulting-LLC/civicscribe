@@ -46,6 +46,11 @@ export class RecorderSession {
 
   constructor(private readonly deps: SessionDeps) {}
 
+  /** The server-side meeting id, once one exists. Null while offline. */
+  get meetingId(): string | null {
+    return this.session?.meetingId ?? null;
+  }
+
   private setPhase(p: RecorderPhase): void {
     this.deps.onPhase(p);
   }

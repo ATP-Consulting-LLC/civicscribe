@@ -2,7 +2,16 @@
 // supabase/migrations/ and are the contract shared by the store layer,
 // the job pipeline, the providers, and the UI.
 
-export type SourceType = "zoom" | "teams" | "meet" | "stream" | "upload";
+/** How a meeting's audio is captured. "local" is the desktop recorder: an
+ *  operator captures the room (or the computer's own audio) with no bot in the
+ *  call, so a host cannot deny entry. */
+export type SourceType =
+  | "zoom"
+  | "teams"
+  | "meet"
+  | "stream"
+  | "upload"
+  | "local";
 
 /** Civic meetings vs. Study Notes educational videos. Drives the
  *  summary prompt + section labels and which dashboard a meeting appears on. */

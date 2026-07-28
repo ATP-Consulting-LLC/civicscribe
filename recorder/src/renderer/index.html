@@ -1,0 +1,114 @@
+<meta charset="utf-8" />
+<title>CivicScribe Recorder</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --fg: #14181f;
+    --muted: #5b6472;
+    --line: #d8dde5;
+    --accent: #1f5fbf;
+    --live: #16794a;
+    --warn: #b45309;
+    --err: #b91c1c;
+    --bg: #ffffff;
+    --panel: #f7f8fa;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fg: #e8ecf2;
+      --muted: #98a2b3;
+      --line: #2b323d;
+      --accent: #6aa3ff;
+      --live: #4ade80;
+      --bg: #12151a;
+      --panel: #1a1f27;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: 20px 22px;
+    color: var(--fg);
+    background: var(--bg);
+  }
+  h1 { font-size: 17px; margin: 0 0 14px; letter-spacing: -0.01em; }
+  .row { display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap; }
+  label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+  input, select {
+    font: inherit; padding: 7px 9px; border: 1px solid var(--line);
+    border-radius: 6px; background: var(--bg); color: var(--fg); min-width: 190px;
+  }
+  button {
+    font: inherit; font-weight: 600; padding: 8px 16px; border-radius: 6px;
+    border: 1px solid transparent; background: var(--accent); color: #fff; cursor: pointer;
+  }
+  button.secondary { background: transparent; border-color: var(--line); color: var(--fg); }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  #status-bar {
+    display: flex; align-items: center; gap: 8px; margin: 14px 0 8px;
+    font-size: 13px; color: var(--muted);
+  }
+  #dot { width: 9px; height: 9px; border-radius: 50%; background: var(--muted); }
+  #dot.recording { background: var(--live); animation: pulse 1.6s ease-in-out infinite; }
+  #dot.reconnecting { background: var(--warn); }
+  #dot.error { background: var(--err); }
+  @keyframes pulse { 50% { opacity: 0.35; } }
+  #phase { font-weight: 600; color: var(--fg); }
+  #public-link { margin-left: auto; font-size: 12px; }
+  #public-link a { color: var(--accent); }
+  #transcript {
+    border: 1px solid var(--line); border-radius: 8px; background: var(--panel);
+    height: 330px; overflow-y: auto; padding: 10px 12px; margin-top: 4px;
+  }
+  #transcript p { margin: 0 0 8px; }
+  #transcript .spk { color: var(--muted); font-weight: 600; margin-right: 6px; }
+  #transcript .empty { color: var(--muted); font-style: italic; }
+  #err { color: var(--err); font-size: 13px; min-height: 18px; margin-top: 8px; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 10px; }
+  label.inline {
+    flex-direction: row; align-items: center; gap: 7px;
+    margin-top: 12px; font-size: 13px; color: var(--fg); cursor: pointer;
+  }
+  label.inline input { min-width: 0; }
+</style>
+
+<h1>CivicScribe Recorder</h1>
+
+<div class="row">
+  <label>
+    Meeting title
+    <input id="title" size="34" placeholder="City Council - regular meeting" />
+  </label>
+  <label>
+    Body
+    <input id="body" size="22" placeholder="City Council" />
+  </label>
+  <label>
+    Audio source
+    <select id="source"></select>
+  </label>
+  <button id="startstop">Start recording</button>
+  <button id="uploadLater" class="secondary" hidden>Upload recording</button>
+</div>
+
+<label class="inline">
+  <input type="checkbox" id="invisible" checked />
+  Hide this window from screen sharing and screen captures
+</label>
+
+<div id="status-bar">
+  <span id="dot"></span>
+  <span>Status: <span id="phase">idle</span></span>
+  <span id="public-link"></span>
+</div>
+
+<div id="transcript"><p class="empty">Transcript will appear here once recording starts.</p></div>
+<div id="err"></div>
+
+<p class="note">
+  Public meetings are recorded from this computer with no bot in the call. The live
+  transcript is published to the meeting's public page as it is captured.
+</p>
+
+<script type="module" src="./app.js"></script>

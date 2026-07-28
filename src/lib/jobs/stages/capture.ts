@@ -78,6 +78,15 @@ export async function handleCapture(
       await captureStream(meeting, store, files, providers);
       break;
     }
+    case "local": {
+      // Local (no-bot) recordings are captured by the desktop recorder, which
+      // uploads audio and finalizes through /api/recorder/*. Nothing here can
+      // capture them, and the recorder never enqueues a capture job - so
+      // reaching this means a local meeting was created down the wrong path.
+      throw new Error(
+        `Meeting ${meeting.id} is a local recording: capture is driven by the desktop recorder, not the job pipeline`
+      );
+    }
     default: {
       const unknownSource: never = meeting.source_type;
       throw new Error(`Unknown source_type: ${String(unknownSource)}`);

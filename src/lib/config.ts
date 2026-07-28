@@ -26,6 +26,11 @@ export interface AppConfig {
   tickSecret: string | null;
   /** Shared secret (URL token) required for the Recall webhook. Null = open. */
   recallWebhookSecret: string | null;
+  /** Shared secret required by the /api/recorder/* routes used by the desktop
+   *  recorder. Null = open, and like the Recall webhook those routes refuse to
+   *  run at all in non-mock mode without it: they write straight to the public
+   *  live transcript, so an open endpoint would let anyone forge lines. */
+  recorderSecret: string | null;
   /** The single admin secret (cookie for the UI, Bearer for scripts). Null =
    *  open mode: the access layer is a complete no-op so dev + the test suite run
    *  unchanged. Set it to gate the admin surface for a public deploy. */
@@ -89,6 +94,7 @@ export function getConfig(): AppConfig {
     captionFetchTimeoutMs: Number(env("CAPTION_FETCH_TIMEOUT_MS") ?? "60000"),
     tickSecret: env("TICK_SECRET"),
     recallWebhookSecret: env("RECALL_WEBHOOK_SECRET"),
+    recorderSecret: env("RECORDER_SECRET"),
     ownerSecret: env("OWNER_SECRET"),
     sessionSecret: env("SESSION_SECRET"),
     bootstrapAdminEmail: env("BOOTSTRAP_ADMIN_EMAIL"),

@@ -17,6 +17,7 @@ const SOURCE_LABEL: Record<Meeting["source_type"], string> = {
   meet: "Google Meet capture",
   stream: "Stream capture",
   upload: "Uploaded file",
+  local: "In-room recording",
 };
 
 export function LibraryMeetingGrid({ meetings }: { meetings: Meeting[] }) {

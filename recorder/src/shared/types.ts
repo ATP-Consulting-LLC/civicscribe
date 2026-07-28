@@ -50,4 +50,7 @@ export interface RecorderNative {
   audioChunk(buf: ArrayBuffer): void;
   finalizeRecording(): Promise<FinalizedRecording>;
   readRecordingBytes(): Promise<ArrayBuffer>;
+  /** Hide/show this window in screen captures and screen shares
+   *  (Windows WDA_EXCLUDEFROMCAPTURE). Visible to the operator either way. */
+  setInvisible(invisible: boolean): Promise<boolean>;
 }

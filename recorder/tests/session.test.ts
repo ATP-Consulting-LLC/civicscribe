@@ -59,6 +59,7 @@ function makeDeps(opts: { createSessionFails?: boolean } = {}) {
       durationMs: 2000,
     })),
     readRecordingBytes: vi.fn(async () => new ArrayBuffer(64044)),
+    setInvisible: vi.fn(async (v: boolean) => v),
   };
 
   const pipe: AudioPipe = {

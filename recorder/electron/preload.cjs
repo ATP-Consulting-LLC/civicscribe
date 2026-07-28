@@ -9,4 +9,5 @@ contextBridge.exposeInMainWorld("recorderNative", {
   audioChunk: (buf) => ipcRenderer.send("audio-chunk", buf),
   finalizeRecording: () => ipcRenderer.invoke("recording-finalize"),
   readRecordingBytes: () => ipcRenderer.invoke("read-recording-bytes"),
+  setInvisible: (invisible) => ipcRenderer.invoke("set-invisible", invisible),
 });

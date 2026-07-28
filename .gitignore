@@ -55,3 +55,6 @@ next-env.d.ts
 /recorder/dist/
 # machine-local recorder config: holds the deployment URL + shared secret
 recorder/**/recorder-config.json
+# generated preview page and stray electron logs (icon.png/.ico ARE committed)
+recorder/build/icon-preview.html
+recorder/*.log
