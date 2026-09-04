@@ -122,3 +122,41 @@ not a city council. A clerk who clicks "See a real meeting" sees EEAC and nothin
 else. The design cannot fix that. Capturing two or three real city council
 meetings from public streams would, and breaks no rule about fabricated data -
 they would be real captures of real public meetings.
+
+## Deploy state, 2026-09-04
+
+The code is merged to `master` and pushed. It is NOT deployed, and should not be
+deployed until both of the following are done, because the contact form is the
+whole conversion path for the audience this page was written for.
+
+**1. Migration 0016 has not been applied to production.**
+CivicScribe's project is `qohvolrzcijqcfapryee`. Without the table, the contact
+route's store write fails and the form returns 500 - the site would look right
+and the only way to reach the business would be broken.
+
+This could not be applied from here. The `supabase` MCP in this environment is
+hard-bound to `tckzucpclfqbbilclegr` (Solar 360 / Aventro production) regardless
+of the repo, which was caught by listing tables before writing. Railway holds
+CivicScribe's real Supabase URL, anon key and service-role key, but the
+service-role key speaks PostgREST and cannot run DDL. Applying the migration
+needs the database password or a Supabase access token, neither of which is in
+the vault.
+
+**2. `RESEND_API_KEY` is not set on the Railway service.**
+Confirmed by listing the service variables. Enquiries would be stored but never
+delivered to `veravoss@`. The route already treats a send failure as non-fatal
+and logs loudly - the row is the record - so this degrades safely rather than
+losing the lead, but nobody would be notified.
+
+`CONTACT_INBOX_EMAIL` needs no action: `config.ts` defaults it to
+`veravoss@atpconsultancy.com`.
+
+Once both are done: `railway up --service civicscribe --ci` with
+`RAILWAY_API_TOKEN` exported from `CIVICSCRIBE_RAILWAY_API_TOKEN` (Account
+scope). Railway does not auto-deploy on push.
+
+**Verified before handoff:** `npm run build` succeeds with `recorder/` moved
+aside, which is exactly what `.railwayignore` does to the deploy context, so the
+Railway build will compile. Locally `npm run build` fails on
+`recorder/electron/main.ts` for a missing `electron` module - pre-existing, and
+never present in the deploy.
