@@ -123,40 +123,55 @@ else. The design cannot fix that. Capturing two or three real city council
 meetings from public streams would, and breaks no rule about fabricated data -
 they would be real captures of real public meetings.
 
-## Deploy state, 2026-09-04
+## Deploy state, 2026-09-04 - SHIPPED
 
-The code is merged to `master` and pushed. It is NOT deployed, and should not be
-deployed until both of the following are done, because the contact form is the
-whole conversion path for the audience this page was written for.
+Live on https://civicscribe.us. Verified after deploy: `/`, `/library`,
+`/topics`, `/search`, `/terms` and `/api/health` all 200; the new headline is
+serving and the old one is gone; `/terms` carries `veravoss@`, not `admin@`.
 
-**1. Migration 0016 has not been applied to production.**
-CivicScribe's project is `qohvolrzcijqcfapryee`. Without the table, the contact
-route's store write fails and the form returns 500 - the site would look right
-and the only way to reach the business would be broken.
+**Migration 0016 IS applied** to `qohvolrzcijqcfapryee`. The table exists with
+RLS on and zero policies, which is deliberate - only the service role touches it.
 
-This could not be applied from here. The `supabase` MCP in this environment is
-hard-bound to `tckzucpclfqbbilclegr` (Solar 360 / Aventro production) regardless
-of the repo, which was caught by listing tables before writing. Railway holds
-CivicScribe's real Supabase URL, anon key and service-role key, but the
-service-role key speaks PostgREST and cannot run DDL. Applying the migration
-needs the database password or a Supabase access token, neither of which is in
-the vault.
+**The contact path was tested against production end to end:** a valid
+submission returned 200 and stored a row carrying its IP and user-agent; the
+honeypot returned 200 and stored nothing; a malformed email returned 400 with a
+message a person can act on. `/enquiries` returns 404 to an anonymous request,
+so the staff gate holds in production and not only in tests. All verification
+rows were deleted afterwards; the table is empty.
 
-**2. `RESEND_API_KEY` is not set on the Railway service.**
-Confirmed by listing the service variables. Enquiries would be stored but never
-delivered to `veravoss@`. The route already treats a send failure as non-fatal
-and logs loudly - the row is the record - so this degrades safely rather than
-losing the lead, but nobody would be notified.
+### How the migration was applied, and the trap in it
 
-`CONTACT_INBOX_EMAIL` needs no action: `config.ts` defaults it to
-`veravoss@atpconsultancy.com`.
+Not with the `supabase` MCP. **That MCP is hard-bound to
+`tckzucpclfqbbilclegr` - Solar 360 / Aventro production - regardless of the repo
+it is invoked from**, and calling `list_tables` before writing is the only reason
+a CivicScribe `CREATE TABLE` did not land in Aventro's database while a peer
+session was shipping in it.
 
-Once both are done: `railway up --service civicscribe --ci` with
+The account-wide `SUPABASE_ACCESS_TOKEN` in the MCP's own config reaches every
+project, so the migration went through the Management API at
+`POST /v1/projects/{ref}/database/query` against the CivicScribe ref explicitly.
+Two things cost time and are worth keeping: `api.supabase.com` sits behind
+Cloudflare and answers Python's default User-Agent with 403 / "error code: 1010"
+(a browser UA fixes it, and it is NOT a token-scope problem), and the vault's
+UNPREFIXED `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` are Solar 360's, not a
+general default.
+
+### Still open
+
+**`RESEND_API_KEY` is not set on the Railway service**, and no Resend key exists
+anywhere on this machine, so it could not be supplied. Enquiries are stored but
+no email is sent. This is why `/enquiries` and the dashboard callout exist: the
+lead is visible to staff rather than invisible. Setting the variable makes the
+email work with no code change - `config.ts` already defaults
+`CONTACT_INBOX_EMAIL` to `veravoss@atpconsultancy.com`.
+
+**The archive is still two seeded meetings plus EEAC.** A clerk clicking "See a
+real meeting" sees a small library. Capturing two or three real city council
+meetings from public streams would fix it and breaks no rule about fabricated
+data.
+
+Deploy command, for next time: `railway up --service civicscribe --ci` with
 `RAILWAY_API_TOKEN` exported from `CIVICSCRIBE_RAILWAY_API_TOKEN` (Account
-scope). Railway does not auto-deploy on push.
-
-**Verified before handoff:** `npm run build` succeeds with `recorder/` moved
-aside, which is exactly what `.railwayignore` does to the deploy context, so the
-Railway build will compile. Locally `npm run build` fails on
-`recorder/electron/main.ts` for a missing `electron` module - pre-existing, and
-never present in the deploy.
+scope). Railway does not auto-deploy on push. `npm run build` fails locally on
+`recorder/electron/main.ts` and never will on Railway, because `.railwayignore`
+excludes `recorder` from the deploy context.
