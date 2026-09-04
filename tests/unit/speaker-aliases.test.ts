@@ -218,7 +218,7 @@ function stubProviders(result: TranscriptionResult): Providers {
       },
     },
     summary: { summarize: unused, synthesizeTopic: unused, catchUp: unused },
-    email: { sendCompletionEmail: unused },
+    email: { sendCompletionEmail: unused, sendContactEnquiry: unused },
   };
 }
 

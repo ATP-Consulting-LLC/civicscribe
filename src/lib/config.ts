@@ -14,6 +14,10 @@ export interface AppConfig {
   recallRegion: string;
   resendApiKey: string | null;
   notifyEmail: string | null;
+  /** Where public "for cities" enquiries are delivered. Defaults to the ATP
+   *  assistant mailbox, which is monitored on a schedule; admin@ is only an
+   *  alias on a personal inbox and nothing watches it. */
+  contactInboxEmail: string;
   /** Local data dir used by the mock-mode file-backed store + local file storage. */
   dataDir: string;
   /** Try fetching an existing caption track before downloading audio (stream sources). */
@@ -85,6 +89,8 @@ export function getConfig(): AppConfig {
     recallRegion: env("RECALL_REGION") ?? "us-west-2",
     resendApiKey: env("RESEND_API_KEY"),
     notifyEmail: env("NOTIFY_EMAIL"),
+    contactInboxEmail:
+      env("CONTACT_INBOX_EMAIL") ?? "veravoss@atpconsultancy.com",
     dataDir: env("DATA_DIR") ?? ".data",
     captionFastLane: (env("CAPTION_FASTLANE") ?? "true") !== "false",
     captionLangs: (env("CAPTION_LANGS") ?? "en,en-US,en-GB,en-orig")

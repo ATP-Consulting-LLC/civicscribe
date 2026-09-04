@@ -350,3 +350,28 @@ export interface MeetingDetail {
   utterances: Utterance[];
   summary: Summary | null;
 }
+
+/** An enquiry from the public "for cities" form. Never public, never indexed,
+ *  never surfaced in the library or search - see 0016_contact_enquiries.sql. */
+export interface ContactEnquiry {
+  id: string;
+  name: string;
+  email: string;
+  organization: string;
+  role: string;
+  message: string;
+  source_ip: string | null;
+  user_agent: string | null;
+  handled: boolean;
+  created_at: string;
+}
+
+export interface NewContactEnquiry {
+  name: string;
+  email: string;
+  organization: string;
+  role?: string;
+  message: string;
+  source_ip?: string | null;
+  user_agent?: string | null;
+}

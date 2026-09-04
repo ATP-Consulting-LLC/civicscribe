@@ -138,7 +138,7 @@ const BLOCKS: LegalBlock[] = [
   {
     kind: "contact",
     intro: `Questions about these Terms can be sent to ATP Consulting LLC at`,
-    email: "admin@atpconsultancy.com",
+    email: "veravoss@atpconsultancy.com",
   },
 ];
 
