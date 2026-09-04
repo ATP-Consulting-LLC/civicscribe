@@ -15,6 +15,19 @@ nixPkgs = ["nodejs_22", "ffmpeg", "yt-dlp"]
 
 [phases.install]
 cmds = [
+  # Print the actual build environment. Two hypotheses about this failure were
+  # wrong because they were guesses about the builder rather than readings of it.
+  "node --version && npm --version && echo NODE_ENV=$NODE_ENV && npm config get omit && npm config get production",
+  # Upgrade npm to the version that provably resolves THIS package.json.
+  # From 2026-09-04: the builder's stock npm crashes in arborist with
+  #   npm error Cannot read properties of null (reading 'edgesOut')
+  # on the lockfile-free install below, and pinning DOWN to 10.9.2 failed
+  # identically. npm 11.17.0 installs this exact package.json cleanly on the
+  # dev machine, with and without NODE_ENV=production. The second `npm --version`
+  # is deliberate: it proves in the log which npm the next step actually runs,
+  # since a global install does not necessarily win on PATH.
+  "npm install -g npm@11.17.0",
+  "npm --version",
   "rm -f package-lock.json",
   "rm -rf node_modules",
   "npm install --include=optional --no-audit --no-fund",
