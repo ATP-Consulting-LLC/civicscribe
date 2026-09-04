@@ -15,6 +15,14 @@ nixPkgs = ["nodejs_22", "ffmpeg", "yt-dlp"]
 
 [phases.install]
 cmds = [
+  # Pin npm. On 2026-09-04 every deploy died here with
+  #   npm error Cannot read properties of null (reading 'edgesOut')
+  # an arborist crash in the npm that nodejs_22 now ships. package.json had not
+  # changed since the last green build on 2026-06-18, so the project was not the
+  # variable, the builder's npm was. The lockfile-free install below is what
+  # exposes it: with no lockfile arborist resolves the whole tree from scratch.
+  # Without this pin, master had been undeployable for ~2.5 months.
+  "npm install -g npm@10.9.2",
   "rm -f package-lock.json",
   "rm -rf node_modules",
   "npm install --include=optional --no-audit --no-fund",
