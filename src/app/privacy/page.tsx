@@ -86,12 +86,12 @@ const BLOCKS: LegalBlock[] = [
   {
     kind: "ul",
     items: [
-      `Recall.ai — provides the meeting-recording assistant that joins and captures meetings.`,
-      `AssemblyAI — transcribes meeting audio and identifies speakers.`,
-      `Anthropic — generates meeting summaries from transcripts.`,
-      `Supabase — database and storage for meeting data and audio.`,
-      `Railway — application hosting and infrastructure.`,
-      `Resend — delivery of transactional email, when email notifications are enabled.`,
+      `Recall.ai - provides the meeting-recording assistant that joins and captures meetings.`,
+      `AssemblyAI - transcribes meeting audio and identifies speakers.`,
+      `Anthropic - generates meeting summaries from transcripts.`,
+      `Supabase - database and storage for meeting data and audio.`,
+      `Railway - application hosting and infrastructure.`,
+      `Resend - delivery of transactional email, when email notifications are enabled.`,
     ],
   },
   {
@@ -119,7 +119,7 @@ const BLOCKS: LegalBlock[] = [
   { kind: "h3", text: "Removing or correcting published content" },
   {
     kind: "p",
-    text: `If you are identified in a published meeting and wish to request correction or removal — for example, a member of the public who spoke during public comment — contact us with enough detail to locate the content. We review each request and act where appropriate, balancing individual interests against the public interest in an accurate civic record.`,
+    text: `If you are identified in a published meeting and wish to request correction or removal, for example as a member of the public who spoke during public comment, contact us with enough detail to locate the content. We review each request and act where appropriate, balancing individual interests against the public interest in an accurate civic record.`,
   },
 
   { kind: "h2", text: "Cookies" },

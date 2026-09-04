@@ -6,7 +6,9 @@
 
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
+import { canonicalTopicBySlug } from "@/lib/topics/taxonomy";
 import { getStore } from "@/lib/store";
 import { Breadcrumbs } from "@/components/nav/Breadcrumbs";
 import { LibraryMeetingGrid } from "@/components/library/LibraryMeetingGrid";
@@ -14,14 +16,11 @@ import { LibraryMeetingGrid } from "@/components/library/LibraryMeetingGrid";
 // The published set behind a slug changes as the admin curates; render fresh.
 export const dynamic = "force-dynamic";
 
-/** Turn a slug ("public-safety") into a readable heading ("Public safety").
- *  The original spelling is lossy-mapped, so this is a best-effort label. */
+/** Every browsable slug is one of the fixed canonical buckets, so the heading is
+ *  that bucket's real label ("Zoning & Land Use"), not a de-hyphenated guess.
+ *  Returns "" for a slug outside the taxonomy, which the page 404s. */
 function slugToLabel(slug: string): string {
-  const words = slug.split("-").filter(Boolean);
-  if (words.length === 0) return slug;
-  return words
-    .map((w, i) => (i === 0 ? w.charAt(0).toUpperCase() + w.slice(1) : w))
-    .join(" ");
+  return canonicalTopicBySlug(slug)?.label ?? "";
 }
 
 export async function generateMetadata({
@@ -31,6 +30,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const label = slugToLabel(decodeURIComponent(slug));
+  if (!label) return { title: "Topic not found · Library" };
   return {
     title: `${label} · Library`,
     description: `Published civic meetings about ${label}.`,
@@ -45,6 +45,9 @@ export default async function TagPage({
   const { slug: rawSlug } = await params;
   const slug = decodeURIComponent(rawSlug);
   const label = slugToLabel(slug);
+  // A slug outside the fixed taxonomy has no page. Before the taxonomy existed
+  // any string rendered an empty, indexable results page.
+  if (!label) notFound();
 
   const rows = await getStore().getTopicMeetings(slug);
   const meetings = rows.map((r) => r.meeting);

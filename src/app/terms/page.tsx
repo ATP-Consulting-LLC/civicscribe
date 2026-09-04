@@ -19,7 +19,7 @@ const BLOCKS: LegalBlock[] = [
   { kind: "h2", text: "The Service" },
   {
     kind: "p",
-    text: `CivicScribe captures, transcribes, and summarizes meetings — primarily open meetings of public bodies — and can publish the results to a public, searchable library. Transcripts and summaries are produced by automated systems.`,
+    text: `CivicScribe captures, transcribes, and summarizes meetings, primarily open meetings of public bodies, and can publish the results to a public, searchable library. Transcripts and summaries are produced by automated systems.`,
   },
 
   { kind: "h2", text: "Eligibility and accounts" },
@@ -113,7 +113,7 @@ const BLOCKS: LegalBlock[] = [
   { kind: "h2", text: "Termination" },
   {
     kind: "p",
-    text: `We may suspend or terminate your access to the Service at any time, with or without notice, including for any violation of these Terms. Provisions that by their nature should survive termination — including ownership, disclaimers, limitation of liability, and indemnification — will survive.`,
+    text: `We may suspend or terminate your access to the Service at any time, with or without notice, including for any violation of these Terms. Provisions that by their nature should survive termination, including ownership, disclaimers, limitation of liability, and indemnification, will survive.`,
   },
 
   { kind: "h2", text: "Governing law and disputes" },

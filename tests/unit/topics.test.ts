@@ -44,8 +44,11 @@ describe("topicSlug", () => {
 });
 
 describe("topicMatchesSlug — reverse-tolerant match", () => {
-  it("matches a topic to its own slug", () => {
-    expect(topicMatchesSlug("Zoning Variance", "zoning-variance")).toBe(true);
+  it("matches a topic to its CANONICAL bucket, not to its own literal slug", () => {
+    expect(topicMatchesSlug("Zoning Variance", "zoning-land-use")).toBe(true);
+    // The literal slug is no longer a browsable page; that is what bounded the
+    // tag surface, which previously grew one page per phrasing forever.
+    expect(topicMatchesSlug("Zoning Variance", "zoning-variance")).toBe(false);
   });
 
   it("matches regardless of the candidate's casing or punctuation", () => {
@@ -125,7 +128,9 @@ describe("aggregateTopics — procedural topics never reach the cloud", () => {
       { meetingId: "m1", topics: ["Roll Call", "Affordable Housing"] },
       { meetingId: "m2", topics: ["Approval of Minutes", "Affordable Housing"] },
     ]);
-    expect(cloud.map((b) => b.slug)).toEqual(["affordable-housing"]);
+    // "Affordable Housing" canonicalizes into the Housing bucket; the two
+    // procedural items contribute nothing at all.
+    expect(cloud.map((b) => b.slug)).toEqual(["housing"]);
     expect(cloud[0].count).toBe(2);
   });
 });

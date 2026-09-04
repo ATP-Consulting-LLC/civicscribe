@@ -15,7 +15,8 @@ let dataDir: string;
 let store: MemoryStore;
 let synthSpy: ReturnType<typeof vi.fn>;
 
-const SLUG = "zoning";
+// Synthesis is keyed by a CANONICAL bucket slug; "Zoning" topics land here.
+const SLUG = "zoning-land-use";
 
 beforeEach(async () => {
   dataDir = await makeTempDataDir();

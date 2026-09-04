@@ -11,15 +11,12 @@
 // to it. Both stores recover a slug's meetings by testing each summary topic
 // with topicMatchesSlug, which keeps MemoryStore and SupabaseStore identical.
 
-/** Slugify a free-text topic into a URL-safe slug: lowercase, non-alphanumeric
- *  runs collapsed to a single hyphen, leading/trailing hyphens trimmed.
- *  Returns "" for a topic with no slug-able characters (callers skip those). */
-export function topicSlug(topic: string): string {
-  return topic
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
+// Defined in ./topics/slug.ts and re-exported here so ./topics/taxonomy.ts can
+// use it without a circular import. Every existing import site is unaffected.
+export { topicSlug } from "@/lib/topics/slug";
+
+import { topicSlug } from "@/lib/topics/slug";
+import { canonicalizeTopic } from "@/lib/topics/taxonomy";
 
 // Routine procedural / administrative agenda items carry no subject matter:
 // nobody browses or searches for "roll call", so they are dropped from the
@@ -99,12 +96,12 @@ export function filterMeaningfulTopics(topics: string[]): string[] {
   return topics.filter(isMeaningfulTopic);
 }
 
-/** True when `topic` belongs to the bucket identified by `slug` — i.e. the
- *  topic re-slugifies to that slug AND is meaningful. An empty or procedural
- *  slug never matches, so those have no browse page. */
+/** True when `topic` belongs to the CANONICAL bucket identified by `slug`, i.e.
+ *  the topic is meaningful and canonicalizes to that bucket. Slugs outside the
+ *  fixed taxonomy never match, so they have no browse page. */
 export function topicMatchesSlug(topic: string, slug: string): boolean {
-  const s = topicSlug(topic);
-  return s !== "" && s === slug && !isProceduralSlug(s);
+  if (!isMeaningfulTopic(topic)) return false;
+  return canonicalizeTopic(topic).slug === slug;
 }
 
 // ---------------------------------------------------------------------------
@@ -116,11 +113,15 @@ export function topicMatchesSlug(topic: string, slug: string): boolean {
 import type { TopicSummary } from "@/lib/types";
 
 /**
- * Aggregate summary topics from PUBLISHED meetings into { topic, slug, count }
- * buckets. Topics that slugify identically collapse into one bucket; `topic` is
- * the most common raw spelling (alphabetical tiebreak), and `count` is the
- * number of DISTINCT meetings in the bucket (a meeting listing two spellings of
- * one slug counts once). Ordered count desc, then topic asc.
+ * Aggregate summary topics from PUBLISHED meetings into the FIXED canonical
+ * buckets (see ./topics/taxonomy.ts). Every free-text topic is mapped onto one
+ * bucket, so the browse surface is bounded no matter how many meetings accrue:
+ * "Downtown rezoning proposal" and "Rezoning of 12 Oak St" both land in
+ * "Zoning & Land Use" instead of minting two permanent pages.
+ *
+ * `topic` is the bucket's canonical label, and `count` is the number of DISTINCT
+ * meetings in it (a meeting listing three zoning topics counts once). Buckets
+ * with no meetings are omitted. Ordered count desc, then label asc.
  *
  * Callers MUST pass only published meetings' summaries; the published filter
  * lives in the store query, not here.
@@ -128,38 +129,26 @@ import type { TopicSummary } from "@/lib/types";
 export function aggregateTopics(
   rows: Array<{ meetingId: string; topics: string[] }>
 ): TopicSummary[] {
-  const buckets = new Map<
-    string,
-    { meetingIds: Set<string>; spellings: Map<string, number> }
-  >();
+  const buckets = new Map<string, { label: string; meetingIds: Set<string> }>();
 
   for (const row of rows) {
     for (const raw of row.topics) {
       // Skip unslug-able topics (no browse page) AND routine procedural items
       // (roll call, minutes, adjournment, …) that are not real subject matter.
       if (!isMeaningfulTopic(raw)) continue;
-      const slug = topicSlug(raw);
+      const { slug, label } = canonicalizeTopic(raw);
       let bucket = buckets.get(slug);
       if (!bucket) {
-        bucket = { meetingIds: new Set(), spellings: new Map() };
+        bucket = { label, meetingIds: new Set() };
         buckets.set(slug, bucket);
       }
       bucket.meetingIds.add(row.meetingId);
-      bucket.spellings.set(raw, (bucket.spellings.get(raw) ?? 0) + 1);
     }
   }
 
   const out: TopicSummary[] = [];
   for (const [slug, bucket] of buckets) {
-    let topic = "";
-    let best = -1;
-    for (const [spelling, n] of bucket.spellings) {
-      if (n > best || (n === best && spelling < topic)) {
-        best = n;
-        topic = spelling;
-      }
-    }
-    out.push({ topic, slug, count: bucket.meetingIds.size });
+    out.push({ topic: bucket.label, slug, count: bucket.meetingIds.size });
   }
 
   out.sort(
