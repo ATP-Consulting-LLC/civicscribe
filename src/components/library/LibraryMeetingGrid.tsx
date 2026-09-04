@@ -20,9 +20,23 @@ const SOURCE_LABEL: Record<Meeting["source_type"], string> = {
   local: "In-room recording",
 };
 
+/** Card width the grid aims for. Used to cap the grid when there are only one
+ *  or two meetings, so a small archive looks deliberate instead of broken. */
+const CARD_REM = 26;
+
 export function LibraryMeetingGrid({ meetings }: { meetings: Meeting[] }) {
+  // A fixed 3-column track leaves a single meeting stranded at a third width in
+  // an otherwise empty row, which reads as a layout bug rather than a small
+  // archive. Capping the grid to the number of cards it actually has keeps one
+  // or two meetings looking intentional. This matters: the archive genuinely is
+  // small right now, and the design has to be honest at that size.
+  const maxWidth =
+    meetings.length >= 3 ? undefined : `${meetings.length * CARD_REM}rem`;
+
   return (
-    <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
+    <ul
+      style={{ maxWidth }}
+      className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
       {meetings.map((meeting) => (
         <li key={meeting.id} className="h-full">
           <Link
@@ -34,7 +48,7 @@ export function LibraryMeetingGrid({ meetings }: { meetings: Meeting[] }) {
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <h2 className="text-xl leading-snug">{meeting.title}</h2>
                 {meeting.kind === "course" && (
-                  <span className="inline-flex items-center rounded-full border border-indigo-300 bg-indigo-50 px-3 py-0.5 text-sm font-semibold text-indigo-800">
+                  <span className="inline-flex items-center rounded-full border border-primary bg-primary-soft px-3 py-0.5 text-sm font-semibold text-primary-strong">
                     Study Notes
                   </span>
                 )}

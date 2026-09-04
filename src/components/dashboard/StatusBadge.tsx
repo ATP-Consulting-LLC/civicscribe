@@ -12,8 +12,8 @@ const STATUS_CONFIG: Record<MeetingStatus, StatusConfig> = {
   pending: {
     label: "Queued",
     processing: true,
-    badgeClass: "bg-slate-200 text-slate-900",
-    dotClass: "bg-slate-600",
+    badgeClass: "bg-line text-ink",
+    dotClass: "bg-ink-faint",
   },
   capturing: {
     label: "Capturing audio",
@@ -24,8 +24,8 @@ const STATUS_CONFIG: Record<MeetingStatus, StatusConfig> = {
   transcribing: {
     label: "Transcribing",
     processing: true,
-    badgeClass: "bg-sky-100 text-sky-900",
-    dotClass: "bg-sky-600",
+    badgeClass: "bg-primary-soft text-primary-strong",
+    dotClass: "bg-primary",
   },
   summarizing: {
     label: "Summarizing",
@@ -36,8 +36,8 @@ const STATUS_CONFIG: Record<MeetingStatus, StatusConfig> = {
   complete: {
     label: "Complete",
     processing: false,
-    badgeClass: "bg-emerald-100 text-emerald-900",
-    dotClass: "bg-emerald-600",
+    badgeClass: "bg-accent-soft text-accent-strong",
+    dotClass: "bg-accent",
   },
   failed: {
     label: "Failed",

@@ -872,3 +872,57 @@ body:has(.home-hero) .site-main {
 .home-links a:hover {
   background: var(--color-accent-strong);
 }
+
+/* ---------------------------------------------------------------------------
+ * Audio scrubber.
+ *
+ * The native range control is a ~4px hairline with a small thumb, which is not
+ * usable for a low-vision reader trying to land on a moment in a three-hour
+ * recording. The track is thickened and the thumb enlarged well past the
+ * default; the 48px row keeps the pointer target generous even though the
+ * visible track is thinner than that.
+ * ------------------------------------------------------------------------- */
+
+.audio-scrub {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+.audio-scrub::-webkit-slider-runnable-track {
+  height: 0.625rem;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+.audio-scrub::-moz-range-track {
+  height: 0.625rem;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+.audio-scrub::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: -0.4375rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(10, 12, 11, 0.35);
+}
+.audio-scrub::-moz-range-thumb {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(10, 12, 11, 0.35);
+}
+.audio-scrub:focus-visible::-webkit-slider-thumb {
+  outline: 4px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.audio-scrub:focus-visible::-moz-range-thumb {
+  outline: 4px solid var(--color-focus);
+  outline-offset: 2px;
+}

@@ -35,10 +35,10 @@ export interface SpeakerColor {
 // Eight visually distinct combinations. All use dark text on a light tinted
 // chip (WCAG AA+ contrast) — never white on a bright color.
 const SPEAKER_PALETTE: readonly SpeakerColor[] = [
-  { chip: "bg-sky-100 text-sky-950 border-sky-300", accent: "text-sky-800" },
+  { chip: "bg-primary-soft text-primary-strong border-primary", accent: "text-primary-strong" },
   {
-    chip: "bg-emerald-100 text-emerald-950 border-emerald-300",
-    accent: "text-emerald-800",
+    chip: "bg-accent-soft text-accent-strong border-accent",
+    accent: "text-accent-strong",
   },
   {
     chip: "bg-amber-100 text-amber-950 border-amber-300",
@@ -49,10 +49,10 @@ const SPEAKER_PALETTE: readonly SpeakerColor[] = [
     accent: "text-violet-800",
   },
   { chip: "bg-rose-100 text-rose-950 border-rose-300", accent: "text-rose-800" },
-  { chip: "bg-teal-100 text-teal-950 border-teal-300", accent: "text-teal-800" },
+  { chip: "bg-accent-soft text-accent-strong border-accent", accent: "text-accent-strong" },
   {
-    chip: "bg-indigo-100 text-indigo-950 border-indigo-300",
-    accent: "text-indigo-800",
+    chip: "bg-primary-soft text-primary-strong border-primary",
+    accent: "text-primary-strong",
   },
   {
     chip: "bg-orange-100 text-orange-950 border-orange-300",
@@ -61,8 +61,8 @@ const SPEAKER_PALETTE: readonly SpeakerColor[] = [
 ];
 
 const DEFAULT_SPEAKER_COLOR: SpeakerColor = {
-  chip: "bg-slate-100 text-slate-950 border-slate-300",
-  accent: "text-slate-800",
+  chip: "bg-tint text-ink border-line",
+  accent: "text-ink",
 };
 
 /** Deterministic color per speaker label. "A".."H" map to 8 distinct colors. */
@@ -99,7 +99,7 @@ export function HighlightedText({
         segment.marked ? (
           <mark
             key={i}
-            className="rounded-sm bg-amber-200 px-0.5 text-slate-950"
+            className="rounded-sm bg-amber-200 px-0.5 text-ink"
           >
             {segment.text}
           </mark>

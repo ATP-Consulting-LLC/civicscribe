@@ -77,7 +77,7 @@ export function CopyLinkButton({
       title="Copy link to this point"
       className={
         className ??
-        "inline-flex items-center gap-1.5 rounded-md border border-slate-300 bg-white px-2.5 py-1 text-sm font-semibold text-teal-800 hover:bg-teal-50 hover:text-teal-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+        "inline-flex items-center gap-1.5 rounded-md border border-line bg-white px-2.5 py-1 text-sm font-semibold text-accent-strong hover:bg-accent-soft hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
       }
     >
       <svg

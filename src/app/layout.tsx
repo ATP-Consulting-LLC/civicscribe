@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 
 const SITE_NAME = "CivicScribe";
 const SITE_DESCRIPTION =
-  "We record your city's public meetings and turn them into text you can search and read.";
+  "We record your city's public meetings. We turn them into text you can search and read.";
 
 // Site-wide metadata. metadataBase makes per-page relative OG/canonical URLs
 // absolute; it comes from APP_BASE_URL (config.baseUrl) and falls back to

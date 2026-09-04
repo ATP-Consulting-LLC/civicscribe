@@ -92,7 +92,7 @@ export function SpeakerName({
           }}
           aria-label={`Edit name for speaker ${speakerLabel} (currently ${displayName})`}
           title="Edit speaker name"
-          className={`inline-flex items-center gap-1 rounded-full border px-3 py-0.5 text-base font-semibold ${color.chip} hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2`}
+          className={`inline-flex items-center gap-1 rounded-full border px-3 py-0.5 text-base font-semibold ${color.chip} hover:brightness-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2`}
         >
           {displayName}
           <span aria-hidden="true" className="text-sm opacity-60">
@@ -129,10 +129,10 @@ export function SpeakerName({
           if (!saving) cancel();
         }}
         aria-label={`New name for speaker ${speakerLabel}. Press Enter to save, Escape to cancel.`}
-        className="w-44 rounded-md border border-slate-400 bg-white px-2 py-0.5 text-base text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 disabled:opacity-60"
+        className="w-44 rounded-md border border-line-strong bg-white px-2 py-0.5 text-base text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus disabled:opacity-60"
       />
       {saving && (
-        <span role="status" className="text-sm text-slate-600">
+        <span role="status" className="text-sm text-ink-soft">
           Saving…
         </span>
       )}

@@ -12,19 +12,19 @@ export interface Crumb {
 }
 
 const linkClass =
-  "rounded font-medium text-teal-800 underline decoration-teal-300 underline-offset-4 hover:text-teal-950 hover:decoration-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2";
+  "rounded font-medium text-accent-strong underline decoration-accent underline-offset-4 hover:text-accent-strong hover:decoration-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2";
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
   if (items.length === 0) return null;
   return (
     <nav aria-label="Breadcrumb">
-      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-lg text-slate-700">
+      <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-lg text-ink-soft">
         {items.map((crumb, i) => {
           const isLast = i === items.length - 1;
           return (
             <li key={`${crumb.label}-${i}`} className="flex items-center gap-x-2">
               {i > 0 && (
-                <span aria-hidden="true" className="text-slate-400">
+                <span aria-hidden="true" className="text-ink-faint">
                   /
                 </span>
               )}
@@ -35,7 +35,7 @@ export function Breadcrumbs({ items }: { items: Crumb[] }) {
               ) : (
                 <span
                   aria-current={isLast ? "page" : undefined}
-                  className="font-semibold text-slate-900"
+                  className="font-semibold text-ink"
                 >
                   {crumb.label}
                 </span>

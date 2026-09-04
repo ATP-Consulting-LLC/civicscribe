@@ -111,15 +111,15 @@ export default function ScheduleList({
                 <div className="flex flex-wrap items-center gap-2">
                   <h2 className="text-lg font-semibold text-ink">{s.title}</h2>
                   {firedOneOff ? (
-                    <span className="rounded-full bg-slate-200 px-2.5 py-0.5 text-xs font-semibold text-slate-700">
+                    <span className="rounded-full bg-line px-2.5 py-0.5 text-xs font-semibold text-ink-soft">
                       Completed
                     </span>
                   ) : (
                     <span
                       className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
                         s.enabled
-                          ? "bg-emerald-100 text-emerald-900"
-                          : "bg-slate-200 text-slate-700"
+                          ? "bg-accent-soft text-accent-strong"
+                          : "bg-line text-ink-soft"
                       }`}
                     >
                       {s.enabled ? "Active" : "Paused"}
@@ -129,7 +129,7 @@ export default function ScheduleList({
                     className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${
                       s.one_off
                         ? "bg-amber-100 text-amber-900"
-                        : "bg-sky-100 text-sky-900"
+                        : "bg-primary-soft text-primary-strong"
                     }`}
                   >
                     {s.one_off ? "One time" : "Repeating"}
