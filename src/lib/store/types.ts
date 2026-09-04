@@ -221,6 +221,10 @@ export interface DataStore {
   /** Record a "for cities" enquiry. Write-only from the app's point of view:
    *  nothing reads these back through the store, so no list/get is exposed. */
   createContactEnquiry(input: NewContactEnquiry): Promise<ContactEnquiry>;
+  /** Newest first, for the staff enquiries surface. Staff-gated at the route:
+   *  these carry a member of the public's name and email and must never appear
+   *  on a public page. */
+  listContactEnquiries(limit?: number): Promise<ContactEnquiry[]>;
 
   // -- search ---------------------------------------------------------------------
   /** Full-text search across utterances. When meetingId is given, restrict to

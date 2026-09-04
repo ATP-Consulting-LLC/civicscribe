@@ -1214,6 +1214,16 @@ export class SupabaseStore implements DataStore {
     return data as ContactEnquiry;
   }
 
+  async listContactEnquiries(limit = 100): Promise<ContactEnquiry[]> {
+    const { data, error } = await this.client
+      .from("contact_enquiries")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(limit);
+    if (error) fail("listContactEnquiries", error);
+    return (data ?? []) as ContactEnquiry[];
+  }
+
   async createSchedule(input: NewSchedule): Promise<Schedule> {
     const { data, error } = await this.client
       .from("schedules")

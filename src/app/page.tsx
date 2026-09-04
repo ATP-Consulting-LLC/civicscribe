@@ -98,11 +98,37 @@ export default async function HomePage() {
   // one scroll and served none of them well.
   if (isAdmin) {
     const user = await currentUser();
-    const meetings = await getStore().listMeetings("civic");
+    const store = getStore();
+    const [meetings, enquiries] = await Promise.all([
+      store.listMeetings("civic"),
+      // Surfaced on the dashboard rather than left for someone to go looking
+      // for: with RESEND_API_KEY unset nothing announces an enquiry, so a city
+      // that wrote in would otherwise be invisible until somebody thought to check.
+      store.listContactEnquiries(50).catch(() => []),
+    ]);
     return (
       <div className="home">
         <LiveNow />
-        <section className="home-section home-section--first">
+        {enquiries.length > 0 && (
+          <section className="home-section home-section--first">
+            <div className="rounded-xl border-2 border-accent bg-accent-soft p-6">
+              <p className="home-kicker">New</p>
+              <h2 className="text-2xl">
+                {enquiries.length === 1
+                  ? "One city has written in"
+                  : `${enquiries.length} cities have written in`}
+              </h2>
+              <p className="mt-2 text-ink-soft">
+                Latest: <strong>{enquiries[0].organization}</strong>, {" "}
+                {enquiries[0].name}.
+              </p>
+              <div className="home-links">
+                <Link href="/enquiries">Read them</Link>
+              </div>
+            </div>
+          </section>
+        )}
+        <section className="home-section">
           <div className="home-signedin">
             <p className="home-kicker">Staff</p>
             <h2>You are signed in{user ? ` as ${user.role}` : ""}.</h2>

@@ -1019,6 +1019,17 @@ export class MemoryStore implements DataStore {
     });
   }
 
+  listContactEnquiries(limit = 100): Promise<ContactEnquiry[]> {
+    return this.withLock(async () => {
+      const db = await this.load();
+      return db.contact_enquiries
+        .slice()
+        .sort((a, b) => b.created_at.localeCompare(a.created_at))
+        .slice(0, limit)
+        .map(clone);
+    });
+  }
+
   createSchedule(input: NewSchedule): Promise<Schedule> {
     return this.withLock(async () => {
       const db = await this.load();
