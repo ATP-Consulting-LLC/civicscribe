@@ -156,7 +156,10 @@ Cloudflare and answers Python's default User-Agent with 403 / "error code: 1010"
 UNPREFIXED `SUPABASE_URL` / `SUPABASE_SERVICE_ROLE_KEY` are Solar 360's, not a
 general default.
 
-### Still open
+### Still open (tracked in open-engine)
+
+Neither blocks the site. Both are parked, not forgotten:
+**oe-1120** (Resend key) and **oe-1121** (archive depth).
 
 **`RESEND_API_KEY` is not set on the Railway service**, and no Resend key exists
 anywhere on this machine, so it could not be supplied. Enquiries are stored but
