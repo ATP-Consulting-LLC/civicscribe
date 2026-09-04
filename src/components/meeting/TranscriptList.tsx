@@ -88,7 +88,7 @@ export function TranscriptList({
 
   if (utterances.length === 0) {
     return (
-      <p className="rounded-xl border border-slate-200 bg-white p-6 text-lg leading-[1.7] text-slate-600">
+      <p className="rounded-xl border border-line bg-white p-6 text-lg leading-[1.7] text-ink-soft">
         No utterances match your search.
       </p>
     );
@@ -99,7 +99,7 @@ export function TranscriptList({
       ref={parentRef}
       tabIndex={0}
       aria-label="Transcript utterances (scrollable)"
-      className="max-h-[65vh] overflow-y-auto rounded-xl border border-slate-200 bg-white shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+      className="max-h-[65vh] overflow-y-auto rounded-xl border border-line bg-white shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
     >
       <div
         role="list"
@@ -127,8 +127,8 @@ export function TranscriptList({
                 width: "100%",
                 transform: `translateY(${item.start}px)`,
               }}
-              className={`border-b border-slate-100 transition-colors duration-700 ${
-                flashed ? "bg-teal-50 ring-2 ring-inset ring-teal-500" : ""
+              className={`border-b border-line transition-colors duration-700 ${
+                flashed ? "bg-accent-soft ring-2 ring-inset ring-focus" : ""
               }`}
             >
               {diarized ? (
@@ -138,7 +138,7 @@ export function TranscriptList({
                     onClick={() => onSeek(utterance.start_ms)}
                     aria-label={`Play audio from ${formatTimestamp(utterance.start_ms)}`}
                     title="Play audio from here"
-                    className="rounded font-mono text-base font-medium tabular-nums text-teal-800 underline decoration-teal-300 underline-offset-4 hover:text-teal-950 hover:decoration-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+                    className="rounded font-mono text-base font-medium tabular-nums text-accent-strong underline decoration-accent underline-offset-4 hover:text-accent-strong hover:decoration-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
                   >
                     {formatTimestamp(utterance.start_ms)}
                   </button>
@@ -165,7 +165,7 @@ export function TranscriptList({
                 </div>
               ) : (
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1 px-4 pt-3">
-                  <span className="font-mono text-base font-medium tabular-nums text-slate-500">
+                  <span className="font-mono text-base font-medium tabular-nums text-ink-faint">
                     {formatTimestamp(utterance.start_ms)}
                   </span>
                   {canCite && (
@@ -179,7 +179,7 @@ export function TranscriptList({
                   )}
                 </div>
               )}
-              <p className="px-4 pb-4 pt-1.5 text-lg leading-[1.7] text-slate-900">
+              <p className="px-4 pb-4 pt-1.5 text-lg leading-[1.7] text-ink">
                 <HighlightedText text={utterance.text} tokens={tokens} />
               </p>
             </article>

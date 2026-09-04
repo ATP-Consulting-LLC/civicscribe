@@ -24,11 +24,11 @@ const STATUS_LABELS: Record<MeetingStatus, string> = {
 };
 
 const STATUS_STYLES: Record<MeetingStatus, string> = {
-  pending: "bg-slate-100 text-slate-800 border-slate-300",
+  pending: "bg-tint text-ink border-line",
   capturing: "bg-amber-100 text-amber-900 border-amber-300",
-  transcribing: "bg-sky-100 text-sky-900 border-sky-300",
+  transcribing: "bg-primary-soft text-primary-strong border-primary",
   summarizing: "bg-violet-100 text-violet-900 border-violet-300",
-  complete: "bg-teal-100 text-teal-900 border-teal-300",
+  complete: "bg-accent-soft text-accent-strong border-accent",
   failed: "bg-red-100 text-red-900 border-red-300",
 };
 
@@ -127,12 +127,12 @@ export default async function MeetingDetailPage({
 
       <header className="mt-5">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900">
+          <h1 className="text-3xl font-bold tracking-tight text-ink">
             {meeting.title}
           </h1>
           <StatusBadge status={meeting.status} />
         </div>
-        <p className="mt-2 text-lg leading-[1.7] text-slate-700">
+        <p className="mt-2 text-lg leading-[1.7] text-ink-soft">
           {meeting.body_name}
           {" · "}
           <time dateTime={meeting.created_at}>

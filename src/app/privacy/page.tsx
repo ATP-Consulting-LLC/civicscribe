@@ -144,7 +144,7 @@ const BLOCKS: LegalBlock[] = [
   {
     kind: "contact",
     intro: `Questions or requests regarding this Privacy Policy can be sent to ATP Consulting LLC at`,
-    email: "admin@atpconsultancy.com",
+    email: "veravoss@atpconsultancy.com",
   },
 ];
 

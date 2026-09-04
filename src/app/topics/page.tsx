@@ -8,7 +8,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { getStore } from "@/lib/store";
-import { Breadcrumbs } from "@/components/nav/Breadcrumbs";
 
 // The published set + topic counts change as the admin curates; render fresh.
 export const dynamic = "force-dynamic";
@@ -16,7 +15,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Topics",
   description:
-    "Cross-meeting topic syntheses: see how a topic was discussed across multiple published civic meetings.",
+    "Subjects that come up at more than one meeting, and what was said about them over time.",
 };
 
 export default async function TopicsPage() {
@@ -24,32 +23,36 @@ export default async function TopicsPage() {
 
   return (
     <div className="flex flex-col gap-8">
-      <div>
-        <Breadcrumbs items={[{ label: "Topics" }]} />
-        <h1 className="mt-4 text-3xl">Topics</h1>
-        <p className="mt-2 max-w-2xl text-ink-soft">
-          Topics that span more than one published meeting. Open a topic to read a
-          synthesis of how it was discussed across those meetings.
+      {/* No breadcrumb. This is the top of the section, and a "Topics" crumb
+          directly above a "Topics" heading just says it twice. */}
+      <header>
+        <h1 className="text-3xl">Subjects that come up again</h1>
+        <p className="mt-3 max-w-2xl text-lg text-ink-soft">
+          Some things come up at more than one meeting. Open one to read what was
+          said about it over time.
         </p>
-      </div>
+      </header>
 
       {topics.length === 0 ? (
-        <p className="text-ink-soft">
-          No topics span multiple meetings yet. Topics appear here as more
-          meetings on the same subject are published.
-        </p>
+        <div className="max-w-2xl rounded-xl border border-line bg-tint p-8">
+          <p className="text-lg">Nothing here yet.</p>
+          <p className="mt-2 text-ink-soft">
+            A subject shows up here once it has been talked about at two or more
+            meetings.
+          </p>
+        </div>
       ) : (
-        <ul className="flex flex-wrap gap-2">
+        <ul className="flex flex-wrap gap-3">
           {topics.map((t) => (
             <li key={t.slug}>
               <Link
                 href={`/topics/${t.slug}`}
-                className="inline-flex items-center gap-2 rounded-full border border-teal-300 bg-teal-50 px-4 py-1.5 text-base font-medium text-teal-900 hover:bg-teal-100 hover:text-teal-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-accent bg-accent-soft px-5 font-medium text-accent-strong hover:bg-primary-soft"
               >
                 <span>{t.topic}</span>
                 <span
                   aria-label={`${t.count} meetings`}
-                  className="rounded-full bg-teal-700 px-2 py-0.5 text-sm font-semibold tabular-nums text-white"
+                  className="rounded-full bg-accent px-2 py-0.5 text-sm font-semibold tabular-nums text-white"
                 >
                   {t.count}
                 </span>

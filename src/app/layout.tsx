@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 
 const SITE_NAME = "CivicScribe";
 const SITE_DESCRIPTION =
-  "Capture, transcribe, and summarize public meetings: a searchable archive of civic business with speaker-labeled transcripts.";
+  "We record your city's public meetings. We turn them into text you can search and read.";
 
 // Site-wide metadata. metadataBase makes per-page relative OG/canonical URLs
 // absolute; it comes from APP_BASE_URL (config.baseUrl) and falls back to
@@ -53,6 +53,50 @@ export const dynamic = "force-dynamic";
 
 const FOOTER_TEXT = "© 2026 ATP Consulting LLC · CivicScribe";
 
+/** The civic dome mark. Its stroke colour is set in globals.css so it can flip
+ *  between the accent green and the on-photo bright green with the header. */
+function BrandMark() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="h-8 w-8 shrink-0"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.9"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 20h16" />
+      <path d="M5 20v-7h14v7" />
+      <path d="M7 13v7M12 13v7M17 13v7" />
+      <path d="M5 13c0-3.9 3.1-7 7-7s7 3.1 7 7" />
+      <path d="M12 6V3" />
+    </svg>
+  );
+}
+
+function SiteFooter() {
+  return (
+    <footer className="border-t border-line bg-surface">
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-8 text-sm text-ink-faint sm:px-6">
+        <span>{FOOTER_TEXT}</span>
+        <nav aria-label="Footer" className="flex flex-wrap items-center gap-5">
+          <Link href="/terms" className="underline underline-offset-4 hover:text-ink">
+            Terms
+          </Link>
+          <Link href="/privacy" className="underline underline-offset-4 hover:text-ink">
+            Privacy
+          </Link>
+          <Link href="/login" className="underline underline-offset-4 hover:text-ink">
+            Staff sign-in
+          </Link>
+        </nav>
+      </div>
+    </footer>
+  );
+}
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -74,57 +118,25 @@ export default async function RootLayout({
             <div className="page-canvas flex min-h-screen flex-1 flex-col">
               <main
                 id="main-content"
-                className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 sm:py-10"
+                className="site-main mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 sm:py-10"
               >
                 {children}
               </main>
-              <footer className="border-t border-line bg-surface">
-                <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-5 text-sm text-ink-soft sm:px-6">
-                  <span>{FOOTER_TEXT}</span>
-                  <nav className="flex flex-wrap items-center gap-4">
-                    <Link
-                      href="/terms"
-                      className="underline-offset-4 hover:text-ink hover:underline"
-                    >
-                      Terms
-                    </Link>
-                    <Link
-                      href="/privacy"
-                      className="underline-offset-4 hover:text-ink hover:underline"
-                    >
-                      Privacy
-                    </Link>
-                  </nav>
-                </div>
-              </footer>
+              <SiteFooter />
             </div>
           </div>
         ) : (
-          // Public: top bar.
+          // Public: top bar. On pages with a hero the header floats over the
+          // photograph; everywhere else it is a solid sticky bar. That switch is
+          // pure CSS (body:has(.home-hero)) so no route detection is needed here.
           <div className="page-canvas flex min-h-screen flex-col">
-            <header className="bg-primary text-white">
+            <header className="site-header">
               <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
                 <Link
                   href="/"
-                  className="inline-flex min-h-11 items-center gap-3 rounded-md text-xl font-bold tracking-tight text-white focus-visible:outline-white"
+                  className="brand inline-flex min-h-12 items-center gap-3 rounded-md text-2xl font-bold tracking-tight"
                 >
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 24 24"
-                    className="h-7 w-7 shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    {/* Simple civic dome mark */}
-                    <path d="M4 20h16" />
-                    <path d="M5 20v-7h14v7" />
-                    <path d="M7 13v7M12 13v7M17 13v7" />
-                    <path d="M5 13c0-3.9 3.1-7 7-7s7 3.1 7 7" />
-                    <path d="M12 6V3" />
-                  </svg>
+                  <BrandMark />
                   CivicScribe
                 </Link>
                 <SiteNav isAdmin={false} />
@@ -132,35 +144,11 @@ export default async function RootLayout({
             </header>
             <main
               id="main-content"
-              className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 sm:py-10"
+              className="site-main mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 sm:py-10"
             >
               {children}
             </main>
-            <footer className="border-t border-line bg-surface">
-              <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-5 text-sm text-ink-soft sm:px-6">
-                <span>{FOOTER_TEXT}</span>
-                <nav className="flex flex-wrap items-center gap-4">
-                  <Link
-                    href="/terms"
-                    className="underline-offset-4 hover:text-ink hover:underline"
-                  >
-                    Terms
-                  </Link>
-                  <Link
-                    href="/privacy"
-                    className="underline-offset-4 hover:text-ink hover:underline"
-                  >
-                    Privacy
-                  </Link>
-                  <Link
-                    href="/login"
-                    className="underline-offset-4 hover:text-ink hover:underline"
-                  >
-                    Sign in
-                  </Link>
-                </nav>
-              </div>
-            </footer>
+            <SiteFooter />
           </div>
         )}
       </body>

@@ -190,7 +190,7 @@ export function MeetingView({
   return (
     <div className="flex flex-col gap-8">
       {detail.meeting.kind === "course" && (
-        <p className="inline-flex w-fit items-center gap-2 rounded-full border border-indigo-300 bg-indigo-50 px-3 py-1 text-sm font-semibold text-indigo-800">
+        <p className="inline-flex w-fit items-center gap-2 rounded-full border border-primary bg-primary-soft px-3 py-1 text-sm font-semibold text-primary-strong">
           Study Notes
         </p>
       )}
@@ -206,7 +206,7 @@ export function MeetingView({
           aria-label="Download transcript"
           className="flex flex-wrap items-center gap-2"
         >
-          <span className="text-base font-semibold text-slate-800">
+          <span className="text-base font-semibold text-ink">
             Download:
           </span>
           {[
@@ -219,7 +219,7 @@ export function MeetingView({
               key={fmt}
               href={`/api/meetings/${detail.meeting.id}/export?format=${fmt}`}
               download
-              className="rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-base font-semibold text-teal-800 hover:bg-teal-50 hover:text-teal-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+              className="rounded-lg border border-line bg-white px-3 py-1.5 text-base font-semibold text-accent-strong hover:bg-accent-soft hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
             >
               {label}
             </a>
@@ -230,7 +230,7 @@ export function MeetingView({
       <section aria-labelledby="transcript-heading">
         <h2
           id="transcript-heading"
-          className="text-xl font-bold tracking-tight text-slate-900"
+          className="text-xl font-bold tracking-tight text-ink"
         >
           Transcript
         </h2>
@@ -244,7 +244,7 @@ export function MeetingView({
         {!hasTranscript ? (
           <p
             aria-live="polite"
-            className="mt-3 rounded-xl border border-slate-200 bg-white p-6 text-lg leading-[1.7] text-slate-600"
+            className="mt-3 rounded-xl border border-line bg-white p-6 text-lg leading-[1.7] text-ink-soft"
           >
             {isProcessing
               ? "The transcript will appear here as soon as transcription finishes."
@@ -252,10 +252,10 @@ export function MeetingView({
           </p>
         ) : (
           <>
-            <div className="sticky top-0 z-10 -mx-1 bg-slate-50/95 px-1 py-3 backdrop-blur">
+            <div className="sticky top-0 z-10 -mx-1 bg-tint/95 px-1 py-3 backdrop-blur">
               <label
                 htmlFor="transcript-search"
-                className="block text-base font-semibold text-slate-800"
+                className="block text-base font-semibold text-ink"
               >
                 Search this transcript
               </label>
@@ -266,12 +266,12 @@ export function MeetingView({
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   placeholder="Filter utterances…"
-                  className="w-full max-w-md rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg text-slate-900 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+                  className="w-full max-w-md rounded-lg border border-line bg-white px-3 py-2 text-lg text-ink placeholder:text-ink-faint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
                 />
                 <p
                   role="status"
                   aria-live="polite"
-                  className="text-base text-slate-700"
+                  className="text-base text-ink-soft"
                 >
                   {tokens.length > 0
                     ? `${filtered.length} of ${detail.utterances.length} utterances`
@@ -296,11 +296,11 @@ export function MeetingView({
       {isAdmin && (
       <section
         aria-label="Delete meeting"
-        className="flex flex-wrap items-center gap-3 border-t border-slate-200 pt-6"
+        className="flex flex-wrap items-center gap-3 border-t border-line pt-6"
       >
         {confirmingDelete ? (
           <>
-            <span className="text-base font-medium text-slate-900">
+            <span className="text-base font-medium text-ink">
               Delete this meeting and its transcript and summary? This cannot be
               undone.
             </span>
@@ -319,7 +319,7 @@ export function MeetingView({
                 setDeleteError(null);
               }}
               disabled={deleting}
-              className="rounded-lg border border-slate-300 bg-white px-4 py-1.5 text-base font-semibold text-slate-800 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 disabled:opacity-60"
+              className="rounded-lg border border-line bg-white px-4 py-1.5 text-base font-semibold text-ink hover:bg-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 disabled:opacity-60"
             >
               Cancel
             </button>
@@ -347,9 +347,9 @@ export function MeetingView({
             role="region"
             aria-live="polite"
             aria-label="Apply speaker name to all utterances"
-            className="flex flex-wrap items-center gap-3 border-t border-teal-200 bg-teal-50/95 px-4 py-3 backdrop-blur"
+            className="flex flex-wrap items-center gap-3 border-t border-accent bg-accent-soft/95 px-4 py-3 backdrop-blur"
           >
-            <p className="text-lg leading-[1.7] text-slate-900">
+            <p className="text-lg leading-[1.7] text-ink">
               Apply &ldquo;{pendingApply.display_name}&rdquo; to all utterances
               by Speaker {pendingApply.speaker_label}?
             </p>
@@ -357,7 +357,7 @@ export function MeetingView({
               type="button"
               onClick={() => void handleApplyAll()}
               disabled={applying}
-              className="rounded-lg bg-teal-700 px-4 py-1.5 text-base font-semibold text-white hover:bg-teal-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 disabled:opacity-60"
+              className="rounded-lg bg-accent px-4 py-1.5 text-base font-semibold text-white hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 disabled:opacity-60"
             >
               {applying ? "Applying…" : "Apply to all"}
             </button>
@@ -368,7 +368,7 @@ export function MeetingView({
                 setApplyError(null);
               }}
               disabled={applying}
-              className="rounded-lg border border-slate-300 bg-white px-4 py-1.5 text-base font-semibold text-slate-800 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 disabled:opacity-60"
+              className="rounded-lg border border-line bg-white px-4 py-1.5 text-base font-semibold text-ink hover:bg-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 disabled:opacity-60"
             >
               No, just this one
             </button>

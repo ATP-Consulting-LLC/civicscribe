@@ -46,6 +46,8 @@ import {
   type UserRole,
   type Utterance,
   type UtteranceSearchResult,
+  ContactEnquiry,
+  NewContactEnquiry,
 } from "@/lib/types";
 import type { DataStore, FileStorage } from "@/lib/store/types";
 import { orderSearchResults } from "@/lib/store/search-order";
@@ -1191,6 +1193,26 @@ export class SupabaseStore implements DataStore {
   }
 
   // -- schedules --------------------------------------------------------------
+
+  async createContactEnquiry(
+    input: NewContactEnquiry
+  ): Promise<ContactEnquiry> {
+    const { data, error } = await this.client
+      .from("contact_enquiries")
+      .insert({
+        name: input.name,
+        email: input.email,
+        organization: input.organization,
+        role: input.role ?? "",
+        message: input.message,
+        source_ip: input.source_ip ?? null,
+        user_agent: input.user_agent ?? null,
+      })
+      .select()
+      .single();
+    if (error) fail("createContactEnquiry", error);
+    return data as ContactEnquiry;
+  }
 
   async createSchedule(input: NewSchedule): Promise<Schedule> {
     const { data, error } = await this.client

@@ -30,6 +30,8 @@ import type {
   Transcript,
   Utterance,
   UtteranceSearchResult,
+  ContactEnquiry,
+  NewContactEnquiry,
   MeetingSummaryContent,
   User,
   NewUser,
@@ -214,6 +216,11 @@ export interface DataStore {
    *  reaches MAX_JOB_ATTEMPTS, marked "failed". Returns the updated jobs. */
   reapStaleJobs(olderThanMs: number): Promise<Job[]>;
   getJobsByMeeting(meetingId: string): Promise<Job[]>;
+
+  // -- contact enquiries -----------------------------------------------------
+  /** Record a "for cities" enquiry. Write-only from the app's point of view:
+   *  nothing reads these back through the store, so no list/get is exposed. */
+  createContactEnquiry(input: NewContactEnquiry): Promise<ContactEnquiry>;
 
   // -- search ---------------------------------------------------------------------
   /** Full-text search across utterances. When meetingId is given, restrict to

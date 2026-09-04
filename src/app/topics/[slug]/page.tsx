@@ -78,7 +78,7 @@ export default async function TopicSynthesisPage({
         <p className="mt-3">
           <Link
             href={`/tags/${slug}`}
-            className="rounded font-medium text-teal-800 underline decoration-teal-300 underline-offset-4 hover:text-teal-950 hover:decoration-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+            className="rounded font-medium text-accent-strong underline decoration-accent underline-offset-4 hover:text-accent-strong hover:decoration-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
           >
             Browse all meetings tagged with this topic
           </Link>
@@ -93,7 +93,7 @@ export default async function TopicSynthesisPage({
       ) : result.content ? (
         <section
           aria-labelledby="synthesis-heading"
-          className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm"
+          className="rounded-xl border border-line bg-white p-6 shadow-sm"
         >
           <h2 id="synthesis-heading" className="sr-only">
             Cross-meeting synthesis

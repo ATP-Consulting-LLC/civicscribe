@@ -22,7 +22,7 @@ export {
 function renderSpans(spans: Span[]) {
   return spans.map((span, i) =>
     span.bold ? (
-      <strong key={i} className="font-semibold text-slate-900">
+      <strong key={i} className="font-semibold text-ink">
         {span.text}
       </strong>
     ) : (
@@ -41,14 +41,14 @@ export function SynthesisMarkdown({ content }: { content: string }) {
           return block.level === 2 ? (
             <h2
               key={i}
-              className="text-2xl font-bold tracking-tight text-slate-900"
+              className="text-2xl font-bold tracking-tight text-ink"
             >
               {renderSpans(block.spans)}
             </h2>
           ) : (
             <h3
               key={i}
-              className="text-xl font-bold tracking-tight text-slate-900"
+              className="text-xl font-bold tracking-tight text-ink"
             >
               {renderSpans(block.spans)}
             </h3>
@@ -60,9 +60,9 @@ export function SynthesisMarkdown({ content }: { content: string }) {
               {block.items.map((item, j) => (
                 <li
                   key={j}
-                  className="flex gap-2 text-lg leading-[1.7] text-slate-800"
+                  className="flex gap-2 text-lg leading-[1.7] text-ink"
                 >
-                  <span aria-hidden="true" className="mt-0.5 text-teal-700">
+                  <span aria-hidden="true" className="mt-0.5 text-accent">
                     •
                   </span>
                   <span>{renderSpans(item)}</span>
@@ -72,7 +72,7 @@ export function SynthesisMarkdown({ content }: { content: string }) {
           );
         }
         return (
-          <p key={i} className="text-lg leading-[1.7] text-slate-800">
+          <p key={i} className="text-lg leading-[1.7] text-ink">
             {renderSpans(block.spans)}
           </p>
         );

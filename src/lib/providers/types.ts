@@ -139,6 +139,20 @@ export interface EmailProvider {
     meeting: Meeting,
     summary: Summary | null
   ): Promise<void>;
+
+  /** Deliver a "for cities" enquiry from the public contact form to the team
+   *  inbox. Throws on failure - the route surfaces that to the sender rather
+   *  than swallowing it, because a silently dropped enquiry is a lost customer. */
+  sendContactEnquiry(to: string, enquiry: ContactEnquiryInput): Promise<void>;
+}
+
+/** What the public contact form collects. Deliberately small. */
+export interface ContactEnquiryInput {
+  name: string;
+  email: string;
+  organization: string;
+  role: string;
+  message: string;
 }
 
 // ---------------------------------------------------------------------------

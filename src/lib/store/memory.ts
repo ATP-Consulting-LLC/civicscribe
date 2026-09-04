@@ -43,6 +43,8 @@ import {
   type NewUser,
   type Utterance,
   type UtteranceSearchResult,
+  ContactEnquiry,
+  NewContactEnquiry,
 } from "@/lib/types";
 import type { DataStore, FileStorage } from "@/lib/store/types";
 import { orderSearchResults } from "@/lib/store/search-order";
@@ -65,6 +67,7 @@ interface DbShape {
   live_utterances: LiveUtterance[];
   /** Monotonic counter mirroring the bigserial id on live_utterances. */
   live_utterances_seq: number;
+  contact_enquiries: ContactEnquiry[];
 }
 
 function emptyDb(): DbShape {
@@ -80,6 +83,7 @@ function emptyDb(): DbShape {
     users: [],
     live_utterances: [],
     live_utterances_seq: 0,
+    contact_enquiries: [],
   };
 }
 
@@ -195,6 +199,9 @@ export class MemoryStore implements DataStore {
                 (max, u) => Math.max(max, u.id),
                 0
               ),
+        // Absent in any db.json written before 0016; an empty list is the
+        // correct reading of "this file predates contact enquiries".
+        contact_enquiries: asArray<ContactEnquiry>(rec.contact_enquiries),
       };
     } catch {
       // Missing or corrupt file: start empty.
@@ -990,6 +997,27 @@ export class MemoryStore implements DataStore {
   }
 
   // -- schedules --------------------------------------------------------------
+
+  createContactEnquiry(input: NewContactEnquiry): Promise<ContactEnquiry> {
+    return this.withLock(async () => {
+      const db = await this.load();
+      const enquiry: ContactEnquiry = {
+        id: randomUUID(),
+        name: input.name,
+        email: input.email,
+        organization: input.organization,
+        role: input.role ?? "",
+        message: input.message,
+        source_ip: input.source_ip ?? null,
+        user_agent: input.user_agent ?? null,
+        handled: false,
+        created_at: now(),
+      };
+      db.contact_enquiries.push(enquiry);
+      await this.persist();
+      return clone(enquiry);
+    });
+  }
 
   createSchedule(input: NewSchedule): Promise<Schedule> {
     return this.withLock(async () => {

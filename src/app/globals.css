@@ -1,10 +1,33 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
- * CivicScribe design tokens — accessibility-first civic aesthetic.
- * Off-white paper background, deep navy primary, restrained teal accent.
- * Base text is 18px with generous line-height for a hard-of-hearing user
- * who reads transcripts for long stretches.
+ * CivicScribe design tokens.
+ *
+ * Redesigned 2026-09-04 (docs/superpowers/specs/2026-09-04-public-surface-redesign.md).
+ * White surfaces, near-black ink, a single deep-green accent that doubles as the
+ * published/approved status colour.
+ *
+ * The token NAMES are deliberately unchanged from the previous navy/teal system.
+ * They are consumed as Tailwind utilities (bg-primary, text-ink-soft, border-line)
+ * across many components, so re-skinning by changing values re-skins the whole app
+ * without touching every file. Do not rename these without sweeping the callers.
+ *
+ * ===========================================================================
+ * DESIGNED FOR LOW VISION. The primary readers are older residents and city
+ * staff with poor eyesight. Everything below follows from that, and none of it
+ * is decorative preference:
+ *
+ *   - 16px base text, 14px absolute floor anywhere on the site.
+ *   - One geometric type scale, ratio 1.25 (major third), anchored at 16px and
+ *     reviewed on a 1536px canvas. Resize by moving the anchor, never by
+ *     multiplying the ladder - that is what puts captions at 12px.
+ *   - Body text contrast targets WCAG AAA (7:1), not the AA minimum of 4.5:1.
+ *   - Interactive targets hold the WCAG 2.5.5 minimum of 44px, primary controls 52px.
+ *   - Heading tracking is only slightly negative. Tight tracking is a design
+ *     habit that costs legibility, and low-vision readers pay for it first.
+ *   - Status is never carried by colour alone - every badge carries a word.
+ *   - Links in prose are underlined, not colour-only.
+ * ===========================================================================
  * ------------------------------------------------------------------------- */
 
 @theme {
@@ -12,41 +35,79 @@
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
 
   /* Surfaces & ink */
-  --color-paper: #f6f5f1;
+  --color-paper: #ffffff;
   --color-surface: #ffffff;
-  --color-ink: #1b2a3a;
-  --color-ink-soft: #44566b;
-  --color-line: #d8dde4;
-  --color-line-strong: #b9c2cd;
+  --color-tint: #f2f5f3;
+  --color-ink: #0a0c0b;
+  /* ink-soft is body-weight secondary text: 10.9:1 on white, comfortably AAA. */
+  --color-ink-soft: #363e3b;
+  /* ink-faint is the FAINTEST text allowed anywhere: 7.4:1 on white, still AAA.
+     Do not introduce anything lighter for text - the old #767f7a was 4.6:1,
+     which passes AA and is genuinely hard to read with poor vision. */
+  --color-ink-faint: #4f5a55;
+  --color-line: #d7ddd9;
+  --color-line-strong: #b6c0bb;
 
-  /* Primary: deep navy */
-  --color-primary: #1e3a5f;
-  --color-primary-strong: #152b47;
-  --color-primary-soft: #e8edf4;
+  /* Dark surfaces - the hero and the recurring dark band */
+  --color-dark: #0d1512;
+  --color-dark-2: #16211d;
 
-  /* Accent: teal (single restrained accent) */
-  --color-accent: #0f766e;
-  --color-accent-strong: #0c5d57;
-  --color-accent-soft: #e4f2f0;
+  /* Primary and accent are the SAME green. One accent, used everywhere.
+     #0f6040 measures 7.59:1 on white - clears AAA, so it is safe for link text.
+     The earlier #116945 was 6.71:1 and quietly failed AAA; design-tokens-a11y
+     caught it. Do not lighten this without re-running that test. */
+  --color-primary: #0f6040;
+  --color-primary-strong: #0c4e33;
+  --color-primary-soft: #e3f2ea;
+  --color-accent: #0f6040;
+  --color-accent-strong: #0c4e33;
+  --color-accent-soft: #e3f2ea;
+  /* ON DARK ONLY, where it runs 9.4:1. On white it is 2.6:1 - effectively
+     invisible - which the test asserts, so this rule cannot quietly rot. */
+  --color-accent-bright: #35c987;
 
   /* Focus ring */
-  --color-focus: #0d9488;
+  --color-focus: #35c987;
 
-  /* Type scale — nothing below 15px anywhere, body text 18px */
-  --text-xs: 0.9375rem;
+  /* ---- Type scale -------------------------------------------------------
+     Geometric, ratio 1.25 (major third), anchored at --text-base = 16px.
+     Sized against a 1536px CSS canvas, which is what a 1920x1080 display at
+     Windows' default 125% scaling produces - the most common desktop viewport,
+     and the one this was reviewed on.
+
+     ANCHORED, NOT MULTIPLIED. An earlier pass ran the whole ladder through a
+     x0.75 multiplier to bring the headline down to 60px. That works for the
+     headline and puts captions at 12px, which is indefensible for readers with
+     poor vision. Re-anchoring gets the same display sizes and keeps a usable
+     floor. If the site needs resizing again, move the anchor and recompute the
+     ladder - do not reintroduce a blanket multiplier.
+
+     --text-xs AND --text-sm both BREAK the ratio at the bottom. Stepping 1.25
+     down from the 16px anchor would give 12.8px and 10.2px; the floor is a hard
+     accessibility limit and it wins over the arithmetic. The geometric ladder
+     therefore runs upward from the anchor only.                              */
+  --text-xs: 0.875rem; /* 14px - hard floor. Timestamps and metadata only. */
   --text-xs--line-height: 1.5;
-  --text-sm: 1rem;
+  --text-sm: 0.9375rem; /* 15px */
   --text-sm--line-height: 1.6;
-  --text-base: 1.125rem;
-  --text-base--line-height: 1.7;
-  --text-lg: 1.3125rem;
-  --text-lg--line-height: 1.6;
-  --text-xl: 1.5rem;
-  --text-xl--line-height: 1.45;
-  --text-2xl: 1.875rem;
-  --text-2xl--line-height: 1.3;
-  --text-3xl: 2.25rem;
-  --text-3xl--line-height: 1.2;
+  --text-base: 1rem; /* 16px - body */
+  --text-base--line-height: 1.65;
+  --text-lg: 1.25rem; /* 20px */
+  --text-lg--line-height: 1.5;
+  --text-xl: 1.5625rem; /* 25px */
+  --text-xl--line-height: 1.35;
+  --text-2xl: 1.9375rem; /* 31px */
+  --text-2xl--line-height: 1.2;
+  --text-3xl: 2.4375rem; /* 39px */
+  --text-3xl--line-height: 1.1;
+  --text-4xl: 3.0625rem; /* 49px */
+  --text-4xl--line-height: 1.05;
+  --text-5xl: 3.8125rem; /* 61px - hero display only */
+  --text-5xl--line-height: 1.02;
+
+  /* Interactive sizing. --size-target IS the WCAG 2.5.5 floor; do not go under. */
+  --size-target: 2.75rem; /* 44px - the WCAG 2.5.5 floor, held exactly */
+  --size-target-lg: 3.25rem; /* 52px - primary buttons and inputs */
 
   /* Subtle pulse for in-progress status indicators */
   --animate-pulse-soft: pulse-soft 2.2s ease-in-out infinite;
@@ -67,15 +128,17 @@
     background-color: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
-    font-size: 1.125rem; /* 18px minimum body text */
-    line-height: 1.7;
+    font-size: 1rem; /* 16px base */
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Strong, always-visible keyboard focus indicator */
+  /* 4px ring, not 3px. A focus indicator that a low-vision user has to hunt for
+     is not an indicator. */
   :focus-visible {
-    outline: 3px solid var(--color-focus);
+    outline: 4px solid var(--color-focus);
     outline-offset: 2px;
+    border-radius: 2px;
   }
 
   ::selection {
@@ -88,12 +151,53 @@
   h3,
   h4 {
     color: var(--color-ink);
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    font-weight: 650;
+    /* Only slightly negative. Tight display tracking costs legibility and
+       low-vision readers pay for it first. */
+    letter-spacing: -0.018em;
     text-wrap: balance;
   }
 
-  /* Respect reduced-motion preferences everywhere */
+  /* Links inside running prose are underlined. Colour alone is not a signal for
+     a reader with poor colour discrimination.
+
+     :not(:has(*)) restricts this to anchors whose content is plain text - i.e.
+     real inline links. Several surfaces (meeting cards, topic tiles) wrap an
+     entire block of markup in a single <a> inside an <li>; without this guard
+     the rule underlines every line of those cards. An anchor that is itself a
+     card already reads as interactive from its shape, so it needs no underline. */
+  p a:not(:has(*)),
+  li a:not(:has(*)) {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 0.08em;
+  }
+
+  /* ...but not navigation. A nav list is plain-text anchors inside <li>, so the
+     rule above would underline every item in the header and the sidebar. Nav
+     already reads as nav; the footer sets its own underlines explicitly. */
+  nav a:not(:has(*)) {
+    text-decoration: none;
+  }
+
+  /* Any control clears the 44px target minimum and never renders below 15px. */
+  button,
+  [type="button"],
+  [type="submit"],
+  [type="text"],
+  [type="email"],
+  [type="password"],
+  [type="url"],
+  [type="search"],
+  select,
+  textarea {
+    font-size: max(0.9375rem, 1em);
+    min-height: var(--size-target);
+  }
+  textarea {
+    min-height: 8rem;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -102,6 +206,16 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+    }
+  }
+
+  /* Honour a user who has turned contrast up at the OS level. */
+  @media (prefers-contrast: more) {
+    :root {
+      --color-ink-soft: #141a18;
+      --color-ink-faint: #222a27;
+      --color-line: #9aa5a0;
+      --color-line-strong: #6f7a75;
     }
   }
 }
@@ -115,8 +229,9 @@
   border-radius: 0.5rem;
   background-color: var(--color-accent-strong);
   color: #ffffff;
-  font-weight: 600;
-  padding: 0.75rem 1.25rem;
+  font-weight: 650;
+  font-size: 1rem;
+  padding: 0.875rem 1.375rem;
 }
 
 .skip-link:focus-visible {
@@ -124,17 +239,94 @@
 }
 
 /* ---------------------------------------------------------------------------
- * Home page — cinematic civic landing (instructional guide + staff sign-in).
- * Dignified and non-partisan: a deep-navy council-chamber hero, parchment
- * text, a single gold hairline accent, and a restrained flag/star motif.
- * The hero is full-bleed: it breaks out of the centered page container to the
- * page-canvas edges. Motion is gated by the global prefers-reduced-motion rule.
+ * Site header.
+ *
+ * On the home page the header floats over the cinematic hero photograph; on every
+ * other page it is a solid sticky bar. Driven entirely by CSS: :has() detects the
+ * hero's presence, so no route detection or client JS is needed. Where :has() is
+ * unsupported the header simply stays solid above the hero, which is still correct.
  * ------------------------------------------------------------------------- */
 
-/* The page canvas (set in layout.tsx on both the public shell and the signed-in
-   content column) is a size container, so the full-bleed hero's cqw units
-   resolve to the canvas width: the full viewport on the public layout, or the
-   content column beside the sidebar when signed in (never overlapping it). */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-line);
+  color: var(--color-ink);
+}
+.site-header a {
+  color: inherit;
+}
+.site-header .brand svg {
+  stroke: var(--color-accent);
+}
+.site-header .nav-link {
+  color: var(--color-ink-soft);
+}
+/* Scoped to the link LIST on purpose. Setting display on .nav-link generally
+   outranks Tailwind's .md:hidden (0,2,0 beats 0,1,0) and leaves the mobile
+   hamburger visible on desktop. The button is a sibling of the <ul>, not in it. */
+.site-header ul .nav-link {
+  min-height: var(--size-target);
+  display: inline-flex;
+  align-items: center;
+}
+.site-header .nav-link:hover {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.site-header .nav-cta {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+body:has(.home-hero) .site-header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 0;
+  color: #fff;
+}
+body:has(.home-hero) .site-header .brand svg {
+  stroke: var(--color-accent-bright);
+}
+body:has(.home-hero) .site-header .nav-link {
+  color: #e8efec;
+}
+body:has(.home-hero) .site-header .nav-link:hover {
+  color: #fff;
+}
+body:has(.home-hero) .site-header .nav-cta {
+  background: var(--color-accent-bright);
+  color: #04120b;
+}
+
+/* The hero has to start at the very top of the canvas, under the floating
+   header. <main> carries page padding everywhere else, so it is zeroed here
+   rather than special-casing the padding at every other route. */
+body:has(.home-hero) .site-main {
+  padding-top: 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * Home page.
+ *
+ * The hero photograph is kept from the previous design. What is new is that it
+ * CONNECTS to the page below it: the product shot straddles the hero's bottom
+ * edge, and the dark surface returns further down, so the dark hero reads as part
+ * of the system rather than a slab bolted to the top.
+ *
+ * COPY ON THIS PAGE IS WRITTEN TO A MEASURED FIFTH-GRADE READING LEVEL
+ * (plainspeak/fk.mjs; every string at or under grade 5.2). Re-measure before
+ * changing any user-facing string. Verbatim transcript quotes are EXEMPT - they
+ * are the public record and simplifying them would falsify it.
+ * ------------------------------------------------------------------------- */
+
 .page-canvas {
   container-type: inline-size;
 }
@@ -142,314 +334,595 @@
 .home {
   display: flex;
   flex-direction: column;
-  gap: 3.5rem;
 }
+
+/* --- hero ---------------------------------------------------------------- */
 
 .home-hero {
   position: relative;
+  isolation: isolate;
   overflow: hidden;
-  /* Full-bleed: break out of the centered, padded <main> to fill the page
-     canvas edge to edge for an immersive entrance (see .page-canvas above).
-     cqw resolves to the canvas width, so this is safe in both layouts. */
   width: 100cqw;
   max-width: 100cqw;
   margin-inline: calc(50% - 50cqw);
-  border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background:
-    radial-gradient(125% 90% at 50% -12%, #284c78 0%, rgba(20, 39, 63, 0.2) 58%, transparent 72%),
-    linear-gradient(180deg, #14273f 0%, #0d1c2f 100%);
-  color: #f4efe6;
-  padding: clamp(2.75rem, 6vw, 5.5rem) clamp(1.5rem, 5vw, 4rem) clamp(3rem, 7vw, 6rem);
-  isolation: isolate;
+  padding: clamp(7rem, 11vw, 10rem) clamp(1.5rem, 5vw, 4rem)
+    clamp(7rem, 12vw, 10.75rem);
+  color: #f4f7f5;
 }
-.home-hero__scene {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-.home-hero__flag {
-  position: absolute;
-  top: -8%;
-  right: -4%;
-  width: min(44%, 440px);
-  opacity: 0.12;
-  transform: rotate(-6deg);
-}
-.home-hero__chamber {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  opacity: 0.16;
-}
-.home-hero__grain {
-  position: absolute;
-  inset: 0;
-  opacity: 0.05;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.home-hero__vignette {
-  position: absolute;
-  inset: 0;
-  box-shadow:
-    inset 0 -140px 170px -70px rgba(0, 0, 0, 0.6),
-    inset 0 0 220px rgba(0, 0, 0, 0.32);
-}
-/* Generated cinematic hero photo + a left/bottom-weighted dark scrim so the
-   parchment headline and buttons stay legible over the image. */
 .home-hero__img {
   object-fit: cover;
   object-position: center 35%;
-  z-index: 0;
+  z-index: -2;
 }
+/* Heavier than a normal hero scrim on purpose: the headline has to hold up for
+   a reader with poor contrast sensitivity, which matters more than seeing the
+   photograph clearly. */
 .home-hero__scrim {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: -1;
   background:
     linear-gradient(
       90deg,
-      rgba(8, 14, 24, 0.94) 0%,
-      rgba(8, 14, 24, 0.72) 38%,
-      rgba(8, 14, 24, 0.34) 68%,
-      rgba(8, 14, 24, 0.52) 100%
+      rgba(4, 8, 6, 0.96) 0%,
+      rgba(4, 8, 6, 0.82) 42%,
+      rgba(4, 8, 6, 0.46) 74%,
+      rgba(4, 8, 6, 0.6) 100%
     ),
     linear-gradient(
       180deg,
-      rgba(8, 14, 24, 0.34) 0%,
-      rgba(8, 14, 24, 0.4) 55%,
-      rgba(8, 14, 24, 0.8) 100%
+      rgba(4, 8, 6, 0.6) 0%,
+      rgba(4, 8, 6, 0.38) 42%,
+      rgba(6, 11, 9, 0.97) 100%
     );
 }
 .home-hero__inner {
   position: relative;
-  z-index: 1;
-  max-width: 46rem;
+  margin: 0 auto;
+  max-width: 72rem;
+}
+.home-hero__copy {
+  max-width: 44rem;
 }
 
 .home-eyebrow {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  margin: 0 0 1.1rem;
-  font-size: 0.8rem;
+  gap: 0.85rem;
+  margin: 0 0 1.625rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #d4af55;
+  color: var(--color-accent-bright);
 }
 .home-eyebrow::before {
   content: "";
   display: inline-block;
-  width: 1.7rem;
-  height: 2px;
-  background: #d4af55;
+  width: 2.5rem;
+  height: 3px;
+  background: var(--color-accent-bright);
 }
 
 .home-display {
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 700;
-  color: #fbf8f2;
-  font-size: clamp(2.35rem, 6vw, 4.1rem);
-  line-height: 1.03;
-  letter-spacing: -0.015em;
-}
-.home-display em {
-  font-style: italic;
-  color: #e9c877;
+  margin: 0 0 1.75rem;
+  color: #fff;
+  font-size: clamp(2.25rem, 4vw, 3.8125rem);
+  line-height: 1.02;
+  letter-spacing: -0.018em;
+  font-weight: 650;
 }
 .home-lede {
-  margin-top: 1.4rem;
-  max-width: 40rem;
-  font-size: 1.18rem;
-  line-height: 1.65;
-  color: #ccd6e3;
+  margin: 0 0 2.5rem;
+  max-width: 20em;
+  font-size: clamp(1.125rem, 1.4vw, 1.3125rem);
+  line-height: 1.5;
+  color: #dbe4e0;
 }
 .home-cta-row {
-  margin-top: 2rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
+  gap: 1rem;
 }
+.home-note {
+  margin: 1.75rem 0 0;
+  font-size: 0.9375rem;
+  color: #b3c0ba;
+}
+
 .home-btn {
   display: inline-flex;
   align-items: center;
-  min-height: 3rem;
-  padding: 0 1.6rem;
-  border-radius: 0.65rem;
-  font-weight: 700;
+  justify-content: center;
+  min-height: var(--size-target-lg);
+  padding: 0 2.25rem;
+  border-radius: 0.75rem;
+  font-size: 1.0625rem;
+  font-weight: 650;
   text-decoration: none;
-  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 .home-btn--primary {
-  background: #d4af55;
-  color: #1c1503;
+  background: var(--color-accent-bright);
+  color: #04120b;
 }
 .home-btn--primary:hover {
-  background: #e2bf66;
-  transform: translateY(-1px);
+  background: #4ad696;
 }
 .home-btn--ghost {
-  color: #f4efe6;
-  border: 1px solid rgba(244, 239, 230, 0.35);
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.55);
 }
 .home-btn--ghost:hover {
-  border-color: #f4efe6;
-  transform: translateY(-1px);
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.home-entrance {
-  opacity: 0;
-  transform: translateY(14px);
-  animation: home-rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
-}
-.home-entrance--2 {
-  animation-delay: 0.12s;
-}
-.home-entrance--3 {
-  animation-delay: 0.24s;
-}
-.home-entrance--4 {
-  animation-delay: 0.36s;
-}
-@keyframes home-rise {
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
+/* --- the product shot straddles the hero's bottom edge -------------------- */
 
-.home-kicker {
-  margin: 0 0 0.6rem;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--color-accent-strong);
+.home-shot {
+  position: relative;
+  z-index: 5;
+  margin-top: clamp(-7.5rem, -8.5vw, -6rem);
 }
-.home-section > h2 {
-  font-size: var(--text-2xl);
-}
-
-.home-steps,
-.home-sources {
-  list-style: none;
-  margin: 1.5rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-}
-.home-step,
-.home-source {
-  border: 1px solid var(--color-line);
-  border-radius: 0.9rem;
+.home-frame {
   background: var(--color-surface);
-  padding: 1.4rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow:
+    0 50px 100px -40px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(0, 0, 0, 0.08);
 }
-.home-step__n {
-  display: grid;
-  place-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
+.home-frame__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 1.375rem;
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-tint);
+}
+.home-frame__dots {
+  display: flex;
+  gap: 0.5rem;
+}
+.home-frame__dots i {
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
   border-radius: 50%;
-  background: var(--color-primary);
-  color: #fff;
-  font-weight: 700;
+  background: #cfd6d2;
 }
-.home-step h3,
-.home-source h3 {
-  margin: 1rem 0 0.4rem;
-  font-size: 1.15rem;
-}
-.home-step p,
-.home-source p {
-  margin: 0;
+.home-frame__q {
+  flex: 1;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 0.625rem;
+  padding: 0.75rem 1.125rem;
+  font-size: 0.9375rem;
   color: var(--color-ink-soft);
+}
+.home-frame__q b {
+  color: var(--color-ink);
+  font-weight: 650;
+}
+.home-frame__body {
+  padding: 1.875rem 2rem 2rem;
+}
+
+/* Search hits inside the front-page panel. These are REAL utterances from the
+   real archive (see realSearchSample in page.tsx), so the speaker names and
+   wording are verbatim public record and are never rewritten or simplified. */
+.home-results__count {
+  margin: 0 0 1.25rem;
+  font-size: 0.9375rem;
+  color: var(--color-ink-faint);
+}
+.home-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.home-result {
+  padding: 1.375rem 0;
+  border-top: 1px solid var(--color-line);
+}
+.home-result:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+.home-result__top {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+  margin: 0 0 0.5rem;
+}
+.home-result__title {
+  font-size: 1.375rem;
+  font-weight: 650;
+  letter-spacing: -0.018em;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+.home-result__title:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.home-result__stamp {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  background: var(--color-tint);
+  border: 1px solid var(--color-line);
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+  color: var(--color-ink-soft);
+}
+.home-result__text {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
+.home-result__who {
+  font-weight: 700;
+  color: var(--color-ink);
+}
+.home-results__more {
+  margin: 1.5rem 0 0;
   font-size: 1rem;
 }
-.home-source h3 {
-  margin-top: 0;
+.home-results__more a {
+  color: var(--color-accent);
+  font-weight: 650;
 }
 
-.home-notes {
-  list-style: none;
-  margin: 1.25rem 0 0;
-  padding: 0;
-  display: grid;
-  gap: 0.6rem;
-  max-width: 62ch;
-}
-.home-notes li {
-  position: relative;
-  padding-left: 1.6rem;
-  color: var(--color-ink-soft);
-}
-.home-notes li::before {
-  content: "";
-  position: absolute;
-  left: 0.1rem;
-  top: 0.62em;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background: var(--color-accent);
-}
+/* --- contact form -------------------------------------------------------- */
 
-.home-signin-card {
+.home-form {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.25rem;
   grid-template-columns: 1fr;
-  border: 1px solid var(--color-line);
-  border-radius: 1rem;
-  background: var(--color-primary-soft);
-  padding: clamp(1.5rem, 4vw, 2.5rem);
+  max-width: 42rem;
+  margin: 0 auto;
 }
-@media (min-width: 760px) {
-  .home-signin-card {
+@media (min-width: 700px) {
+  .home-form {
     grid-template-columns: 1fr 1fr;
-    align-items: center;
   }
 }
-.home-signin-card h2 {
-  margin: 0 0 0.6rem;
+.home-form__full {
+  grid-column: 1 / -1;
 }
-.home-signin-card p {
+.home-form label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 650;
+  color: var(--color-ink-soft);
+  margin-bottom: 0.5rem;
+}
+.home-form input,
+.home-form textarea {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.875rem 1rem;
+  min-height: var(--size-target-lg);
+  border: 2px solid var(--color-line);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+.home-form textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+.home-form button {
+  width: 100%;
+  min-height: var(--size-target-lg);
+  border: 0;
+  border-radius: 0.75rem;
+  background: var(--color-accent);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.0625rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+.home-form button:hover:not(:disabled) {
+  background: var(--color-accent-strong);
+}
+.home-form button:disabled {
+  opacity: 0.65;
+  cursor: progress;
+}
+/* The honeypot. Hidden from sight and from assistive tech, but a bot filling
+   every field will still tick it. Never use display:none - some bots skip
+   those - and never label it in a way a human could be tempted to complete. */
+.home-form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.home-form__status {
+  grid-column: 1 / -1;
   margin: 0;
+  font-size: 1.0625rem;
+  padding: 1rem 1.125rem;
+  border-radius: 0.75rem;
+}
+.home-form__status--ok {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-strong);
+  border: 1px solid var(--color-accent);
+}
+.home-form__status--bad {
+  background: #fdeaea;
+  color: #8a1c1c;
+  border: 1px solid #d99a9a;
+}
+
+/* --- generic section rhythm ---------------------------------------------- */
+
+.home-section {
+  padding: clamp(3rem, 6.5vw, 5.25rem) 0;
+}
+.home-section--first {
+  padding-top: clamp(2.25rem, 4.5vw, 3.375rem);
+}
+.home-section--tint {
+  background: var(--color-tint);
+  width: 100cqw;
+  max-width: 100cqw;
+  margin-inline: calc(50% - 50cqw);
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+}
+.home-section--dark {
+  background: var(--color-dark);
+  color: #e9efec;
+  width: 100cqw;
+  max-width: 100cqw;
+  margin-inline: calc(50% - 50cqw);
+  padding-inline: clamp(1.5rem, 5vw, 4rem);
+}
+.home-inner {
+  margin: 0 auto;
+  max-width: 72rem;
+}
+
+.home-shead {
+  max-width: 20em;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.75rem);
+  text-align: center;
+}
+.home-shead--left {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+  text-align: left;
+}
+.home-kicker {
+  margin: 0 0 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+.home-section--dark .home-kicker {
+  color: var(--color-accent-bright);
+}
+.home-section h2 {
+  margin: 0 0 1.125rem;
+  font-size: clamp(1.625rem, 2.55vw, 2.4375rem);
+  line-height: 1.08;
+}
+.home-section--dark h2 {
+  color: #fff;
+}
+.home-sub {
+  margin: 0;
+  font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
+  line-height: 1.5;
   color: var(--color-ink-soft);
 }
+.home-section--dark .home-sub {
+  color: #bac6c1;
+}
+
+/* --- three-up tiles ------------------------------------------------------ */
+
+.home-tiles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+}
+.home-tile {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  padding: 2.375rem 2.25rem;
+}
+.home-tile__icon {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 0.875rem;
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+.home-tile h3 {
+  margin: 0 0 0.75rem;
+  font-size: 1.5625rem;
+}
+.home-tile p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
+
+/* --- dark band: split copy + status panel -------------------------------- */
+
+.home-split {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .home-split {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.home-checks {
+  list-style: none;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.125rem;
+}
+.home-checks li {
+  display: flex;
+  gap: 0.875rem;
+  align-items: flex-start;
+  font-size: 1rem;
+  color: #cdd8d3;
+}
+.home-checks svg {
+  flex: none;
+  margin-top: 0.25rem;
+  color: var(--color-accent-bright);
+}
+.home-panel {
+  background: var(--color-dark-2);
+  border: 1px solid #2b3833;
+  border-radius: 1rem;
+  padding: 0.5rem 1.75rem;
+}
+.home-prow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.375rem 0;
+  border-bottom: 1px solid #2b3833;
+  font-size: 1rem;
+  color: #d6e0db;
+}
+.home-prow:last-child {
+  border-bottom: 0;
+}
+/* Every badge carries a WORD. Status is never colour alone. */
+.home-badge {
+  font-size: 0.875rem;
+  font-weight: 650;
+  padding: 0.375rem 0.9375rem;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.home-badge--ok {
+  background: rgba(53, 201, 135, 0.18);
+  color: var(--color-accent-bright);
+}
+.home-badge--wait {
+  background: rgba(232, 200, 100, 0.18);
+  color: #e8c864;
+}
+.home-badge--review {
+  background: rgba(140, 175, 255, 0.18);
+  color: #a9c0f5;
+}
+
+/* --- signed-in staff panel on home --------------------------------------- */
 
 .home-signedin {
   border: 1px solid var(--color-line);
   border-radius: 1rem;
   background: var(--color-accent-soft);
-  padding: clamp(1.5rem, 4vw, 2.2rem);
+  padding: clamp(1.75rem, 4vw, 2.5rem);
 }
 .home-signedin h2 {
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.5rem;
 }
 .home-links {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.7rem;
+  gap: 0.875rem;
 }
 .home-links a {
   display: inline-flex;
   align-items: center;
-  min-height: 2.7rem;
-  padding: 0 1.2rem;
-  border-radius: 0.6rem;
+  min-height: var(--size-target);
+  padding: 0 1.5rem;
+  border-radius: 0.625rem;
   background: var(--color-accent);
   color: #fff;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 650;
   text-decoration: none;
 }
 .home-links a:hover {
   background: var(--color-accent-strong);
+}
+
+/* ---------------------------------------------------------------------------
+ * Audio scrubber.
+ *
+ * The native range control is a ~4px hairline with a small thumb, which is not
+ * usable for a low-vision reader trying to land on a moment in a three-hour
+ * recording. The track is thickened and the thumb enlarged well past the
+ * default; the 48px row keeps the pointer target generous even though the
+ * visible track is thinner than that.
+ * ------------------------------------------------------------------------- */
+
+.audio-scrub {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+.audio-scrub::-webkit-slider-runnable-track {
+  height: 0.625rem;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+.audio-scrub::-moz-range-track {
+  height: 0.625rem;
+  border-radius: 999px;
+  background: var(--color-line);
+}
+.audio-scrub::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: -0.4375rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(10, 12, 11, 0.35);
+}
+.audio-scrub::-moz-range-thumb {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--color-accent);
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(10, 12, 11, 0.35);
+}
+.audio-scrub:focus-visible::-webkit-slider-thumb {
+  outline: 4px solid var(--color-focus);
+  outline-offset: 2px;
+}
+.audio-scrub:focus-visible::-moz-range-thumb {
+  outline: 4px solid var(--color-focus);
+  outline-offset: 2px;
 }

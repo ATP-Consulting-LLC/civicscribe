@@ -20,9 +20,9 @@ import { canonicalizeTopic } from "@/lib/topics/taxonomy";
 const baseChip =
   "inline-flex items-center rounded-full border px-3 py-1 text-base font-medium";
 
-const linkChip = `${baseChip} border-teal-300 bg-teal-50 text-teal-900 hover:bg-teal-100 hover:text-teal-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2`;
+const linkChip = `${baseChip} border-accent bg-accent-soft text-accent-strong hover:bg-accent-soft hover:text-accent-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2`;
 
-const staticChip = `${baseChip} border-slate-300 bg-slate-100 text-slate-800`;
+const staticChip = `${baseChip} border-line bg-tint text-ink`;
 
 export function TopicChips({
   topics,

@@ -19,7 +19,9 @@ import {
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Search · CivicScribe",
+  // The root layout template already appends " · CivicScribe"; repeating it here
+  // produced "Search · CivicScribe · CivicScribe" in the browser tab.
+  title: "Search",
 };
 
 interface MeetingGroup {
@@ -79,14 +81,14 @@ export default async function SearchPage({
         items={[{ label: "Library", href: "/library" }, { label: "Search" }]}
       />
 
-      <h1 className="mt-5 text-3xl font-bold tracking-tight text-slate-900">
+      <h1 className="mt-5 text-3xl font-bold tracking-tight text-ink">
         Search transcripts
       </h1>
 
       <form method="GET" action="/search" role="search" className="mt-6">
         <label
           htmlFor="q"
-          className="block text-base font-semibold text-slate-800"
+          className="block text-base font-semibold text-ink"
         >
           Search every meeting transcript
         </label>
@@ -97,11 +99,11 @@ export default async function SearchPage({
             type="search"
             defaultValue={q}
             placeholder="e.g. zoning variance, budget amendment…"
-            className="w-full max-w-xl rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-lg text-slate-900 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+            className="w-full max-w-xl rounded-lg border border-line bg-white px-4 py-2.5 text-lg text-ink placeholder:text-ink-faint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
           />
           <button
             type="submit"
-            className="rounded-lg bg-teal-700 px-5 py-2.5 text-lg font-semibold text-white hover:bg-teal-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+            className="rounded-lg bg-accent px-5 py-2.5 text-lg font-semibold text-white hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
           >
             Search
           </button>
@@ -110,18 +112,18 @@ export default async function SearchPage({
 
       <section aria-label="Search results" className="mt-8">
         {q === "" ? (
-          <p className="text-lg leading-[1.7] text-slate-600">
+          <p className="text-lg leading-[1.7] text-ink-soft">
             Enter a word or phrase to search across all meeting transcripts.
           </p>
         ) : results.length === 0 ? (
-          <p className="text-lg leading-[1.7] text-slate-700">
+          <p className="text-lg leading-[1.7] text-ink-soft">
             No utterances matched{" "}
             <strong className="font-semibold">&ldquo;{q}&rdquo;</strong>. Try a
             different word or a shorter phrase.
           </p>
         ) : (
           <>
-            <p className="text-lg leading-[1.7] text-slate-700">
+            <p className="text-lg leading-[1.7] text-ink-soft">
               {results.length} matching utterance
               {results.length === 1 ? "" : "s"} in {groups.length} meeting
               {groups.length === 1 ? "" : "s"} for{" "}
@@ -133,7 +135,7 @@ export default async function SearchPage({
                 <section
                   key={group.meeting.id}
                   aria-labelledby={`meeting-${group.meeting.id}-heading`}
-                  className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm"
+                  className="rounded-xl border border-line bg-white p-5 shadow-sm"
                 >
                   <h2
                     id={`meeting-${group.meeting.id}-heading`}
@@ -141,12 +143,12 @@ export default async function SearchPage({
                   >
                     <Link
                       href={`/meetings/${group.meeting.id}`}
-                      className="rounded text-slate-900 underline decoration-teal-300 underline-offset-4 hover:text-teal-900 hover:decoration-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2"
+                      className="rounded text-ink underline decoration-accent underline-offset-4 hover:text-accent-strong hover:decoration-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
                     >
                       {group.meeting.title}
                     </Link>
                   </h2>
-                  <p className="mt-1 text-base text-slate-600">
+                  <p className="mt-1 text-base text-ink-soft">
                     {group.meeting.body_name}
                     {" · "}
                     <time dateTime={group.meeting.created_at}>
@@ -154,17 +156,17 @@ export default async function SearchPage({
                     </time>
                   </p>
 
-                  <ul className="mt-4 divide-y divide-slate-100">
+                  <ul className="mt-4 divide-y divide-line">
                     {group.items.map(({ utterance }) => {
                       const color = speakerColor(utterance.speaker_label);
                       return (
                         <li key={utterance.id}>
                           <Link
                             href={`/meetings/${group.meeting.id}#u-${utterance.id}`}
-                            className="block rounded-lg px-3 py-3 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+                            className="block rounded-lg px-3 py-3 hover:bg-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
                           >
                             <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                              <span className="font-mono text-base font-medium tabular-nums text-teal-800">
+                              <span className="font-mono text-base font-medium tabular-nums text-accent-strong">
                                 {formatTimestamp(utterance.start_ms)}
                               </span>
                               <span
@@ -176,7 +178,7 @@ export default async function SearchPage({
                                 )}
                               </span>
                             </span>
-                            <span className="mt-1.5 block text-lg leading-[1.7] text-slate-900">
+                            <span className="mt-1.5 block text-lg leading-[1.7] text-ink">
                               <HighlightedText
                                 text={utterance.text}
                                 tokens={tokens}

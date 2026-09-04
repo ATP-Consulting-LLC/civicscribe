@@ -180,10 +180,10 @@ export function SelfServeResult({ meetingId }: { meetingId: string }) {
         <p className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-900">
           Private preview
         </p>
-        <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">
+        <h1 className="mt-3 text-3xl font-bold tracking-tight text-ink">
           {meeting.title}
         </h1>
-        <p className="mt-2 text-lg leading-[1.7] text-slate-700">
+        <p className="mt-2 text-lg leading-[1.7] text-ink-soft">
           {meeting.body_name}
         </p>
         <p className="mt-3 max-w-2xl text-base leading-[1.7] text-ink-soft">
@@ -258,7 +258,7 @@ export function SelfServeResult({ meetingId }: { meetingId: string }) {
         <section aria-labelledby="transcript-heading">
           <h2
             id="transcript-heading"
-            className="text-xl font-bold tracking-tight text-slate-900"
+            className="text-xl font-bold tracking-tight text-ink"
           >
             Transcript
           </h2>
@@ -272,7 +272,7 @@ export function SelfServeResult({ meetingId }: { meetingId: string }) {
           {!hasTranscript ? (
             <p
               aria-live="polite"
-              className="mt-3 rounded-xl border border-slate-200 bg-white p-6 text-lg leading-[1.7] text-slate-600"
+              className="mt-3 rounded-xl border border-line bg-white p-6 text-lg leading-[1.7] text-ink-soft"
             >
               {isProcessing
                 ? "The transcript will appear here as soon as transcription finishes. This page updates automatically, no need to refresh."
@@ -283,7 +283,7 @@ export function SelfServeResult({ meetingId }: { meetingId: string }) {
               <div className="mt-3 mb-3">
                 <label
                   htmlFor="transcript-search"
-                  className="block text-base font-semibold text-slate-800"
+                  className="block text-base font-semibold text-ink"
                 >
                   Search this transcript
                 </label>
@@ -294,9 +294,9 @@ export function SelfServeResult({ meetingId }: { meetingId: string }) {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     placeholder="Filter utterances…"
-                    className="w-full max-w-md rounded-lg border border-slate-300 bg-white px-3 py-2 text-lg text-slate-900 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+                    className="w-full max-w-md rounded-lg border border-line bg-white px-3 py-2 text-lg text-ink placeholder:text-ink-faint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus"
                   />
-                  <p role="status" aria-live="polite" className="text-base text-slate-700">
+                  <p role="status" aria-live="polite" className="text-base text-ink-soft">
                     {tokens.length > 0
                       ? `${filtered.length} of ${detail.utterances.length} utterances`
                       : `${detail.utterances.length} utterances`}

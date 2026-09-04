@@ -1,7 +1,10 @@
 // Mock Resend email provider. Logs a formatted "would send" block to the
 // server console instead of sending anything.
 
-import type { EmailProvider } from "@/lib/providers/types";
+import type {
+  ContactEnquiryInput,
+  EmailProvider,
+} from "@/lib/providers/types";
 import type { Meeting, Summary } from "@/lib/types";
 
 export class MockEmailProvider implements EmailProvider {
@@ -35,5 +38,24 @@ export class MockEmailProvider implements EmailProvider {
       divider,
     ];
     console.log(lines.join("\n"));
+  }
+
+  async sendContactEnquiry(
+    to: string,
+    enquiry: ContactEnquiryInput
+  ): Promise<void> {
+    const divider = "=".repeat(64);
+    console.log(
+      [
+        divider,
+        "[MockEmailProvider] Would send contact enquiry",
+        `  To:       ${to}`,
+        `  Reply to: ${enquiry.email}`,
+        `  From:     ${enquiry.name} (${enquiry.role || "role not given"})`,
+        `  Org:      ${enquiry.organization}`,
+        `  Message:  ${enquiry.message}`,
+        divider,
+      ].join("\n")
+    );
   }
 }

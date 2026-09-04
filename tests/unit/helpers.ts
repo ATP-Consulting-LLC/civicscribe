@@ -35,6 +35,7 @@ export function testConfig(overrides: Partial<AppConfig> = {}): AppConfig {
     recallRegion: "us-west-2",
     resendApiKey: null,
     notifyEmail: null,
+    contactInboxEmail: "test-inbox@example.test",
     dataDir: ".data-test-unused",
     captionFastLane: true,
     captionLangs: ["en", "en-US", "en-GB", "en-orig"],
