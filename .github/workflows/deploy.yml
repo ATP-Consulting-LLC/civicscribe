@@ -1,0 +1,78 @@
+# Deploy master to Railway on every push.
+#
+# WHY A WORKFLOW RATHER THAN RAILWAY'S OWN GITHUB INTEGRATION
+#
+# Railway can watch a repo directly, but its GitHub App is installed only on the
+# personal quantunite account and can see none of the ATP-Consulting-LLC org's
+# repositories, this one included. Installing an app on an organisation is a UI
+# and OAuth flow that no API can perform on an owner's behalf, so the repo could
+# not be connected from a session. This workflow reaches the same outcome using
+# access the repo already has.
+#
+# Until this existed the service had `source: null` and had never been connected
+# to anything: every release since the project began was a hand-run `railway up`
+# from somebody's laptop. The front page fix sat pushed and undeployed for that
+# reason, and on a Windows machine where Application Control now blocks
+# railway.exe there was no way to run it at all.
+#
+# The credential is a PROJECT-scoped Railway token, not the account token. An
+# account token can act on every project on the account (frontdesk, twisty, atp);
+# a project token can only touch civicscribe production, which is all a deploy
+# needs and all CI should ever be able to reach.
+
+name: Deploy to Railway
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      # Discovery output is data, not application code. Regenerating the
+      # Massachusetts catalogue should never ship a release.
+      - "tools/ma-discovery/out/**"
+      - "**/*.md"
+      - "docs/**"
+  workflow_dispatch:
+
+# One deploy at a time. Two pushes in quick succession would otherwise race and
+# the loser could overwrite the winner with an older build.
+concurrency:
+  group: railway-deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: railway up
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install the Railway CLI
+        run: npm install -g @railway/cli@4
+
+      - name: Deploy
+        env:
+          # A project token authenticates as the project, so no --environment is
+          # needed: the token already names production.
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: railway up --service civicscribe --ci
+
+      - name: Confirm the deployed site answers
+        run: |
+          # A green `railway up` means the build was accepted, not that the site
+          # is serving. Ask the running app before calling this a success.
+          for attempt in $(seq 1 30); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' https://civicscribe.us/api/health || true)
+            if [ "$code" = "200" ]; then
+              echo "health check passed on attempt $attempt"
+              exit 0
+            fi
+            echo "attempt $attempt: health returned ${code:-no response}"
+            sleep 10
+          done
+          echo "health check never returned 200"
+          exit 1
