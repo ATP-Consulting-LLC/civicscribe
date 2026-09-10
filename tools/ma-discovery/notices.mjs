@@ -59,6 +59,62 @@ function clockTime(hhmm) {
   return `${hour}:${m[2]} ${suffix}`;
 }
 
+// Words that mark a calendar entry as a meeting of a public body rather than a
+// community event. A municipal calendar mixes both freely.
+const BODY_WORDS = /\b(board|commission|committee|council|trustees|authority|selectmen|subcommittee|sub-committee|task force|district|assessors|registrars)\b/i;
+
+/** Normalise a name for comparison against the roster. */
+function norm(s) {
+  return s.toLowerCase().replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
+/**
+ * Is this calendar entry a meeting of a public body we may notice?
+ *
+ * Two gates, and the roster is the sharp one. A town's own /rss.aspx names
+ * every board and commission it publishes agendas for, so a title that matches
+ * the roster IS a public body by the town's own reckoning, and one that matches
+ * nothing and carries no governance word is an event.
+ *
+ * This exists because the first run drafted a statutory notice of intent to
+ * record the Apple Festival, a 9/11 remembrance ceremony and a blood pressure
+ * clinic, and drafted notices for meetings the calendar had already marked
+ * CANCELLED. Either would tell a clerk, correctly, that nobody read this before
+ * sending it.
+ */
+export function isRecordableBody(title, roster = []) {
+  const t = title.trim();
+
+  // A cancelled meeting is not happening, whatever else the title says.
+  if (/\bcancell?ed\b|\bpostponed\b|\brescheduled\b/i.test(t)) {
+    return { ok: false, reason: "cancelled" };
+  }
+
+  // Positive identification comes FIRST. Running the event-word exclusion
+  // ahead of it threw away Andover's 250th Anniversary Committee, which is a
+  // committee that happens to have "anniversary" in its name.
+  const n = norm(t);
+  const matched = roster.some((b) => {
+    const nb = norm(b);
+    return nb.length > 3 && (n.includes(nb) || nb.includes(n));
+  });
+  if (matched) return { ok: true, reason: "roster" };
+  if (BODY_WORDS.test(t)) return { ok: true, reason: "governance-word" };
+
+  if (/^announcement\b|\bceremony\b|\bfestival\b|\bclinic\b|\bheritage month\b|\bopen house\b|\bcelebration\b|\bfilm\b|\bsculpture\b/i.test(t)) {
+    return { ok: false, reason: "not-a-meeting" };
+  }
+
+  // Neither clearly a body nor clearly an event. "Water Department" and
+  // "Open Space Public Meeting #2" both landed here, and both could be real
+  // open meetings. Silently dropping a real public meeting is the worse error
+  // of the two, so these surface for a person to judge instead.
+  if (/\bmeeting\b|\bhearing\b|\bsession\b|\bdepartment\b/i.test(t)) {
+    return { ok: false, reason: "review" };
+  }
+  return { ok: false, reason: "not-a-meeting" };
+}
+
 /**
  * The exact instant of a wall-clock time in a named zone.
  *
@@ -159,6 +215,7 @@ async function main() {
 
   const today = new Date().toISOString().slice(0, 10);
   const targets = [];
+  const skipped = [];
   for (const muni of catalogue.municipalities) {
     for (const notice of muni.notices ?? []) {
       // Only meetings we could actually schedule: a real body, a real date in
@@ -166,6 +223,15 @@ async function main() {
       // one we can promise to record.
       if (!notice.date || notice.date < today || !notice.start_time) continue;
       if (/^\(untitled\)$/i.test(notice.title)) continue;
+
+      // A municipal calendar mixes public-body meetings with community events.
+      // Only the former get a s. 20(c) notice.
+      const recordable = isRecordableBody(notice.title, muni.bodies ?? []);
+      if (!recordable.ok) {
+        skipped.push({ town: muni.name, title: notice.title, why: recordable.reason });
+        continue;
+      }
+
       targets.push({
         town: muni.name,
         body: notice.title.replace(/\s+/g, " ").trim(),
@@ -214,6 +280,21 @@ async function main() {
   console.log(`${index.length} notice drafts across ${towns.size} municipalities.`);
   console.log(`  ${joinable} for meetings with a joinable remote link, ${index.length - joinable} in person.`);
   console.log(`  ready to send (48h+ lead): ${by('sendable')}  |  tight (24-48h): ${by('tight')}  |  too late (<24h): ${by('too-late')}`);
+  const why = (reason) => skipped.filter((x) => x.why === reason);
+  console.log(
+    `  filtered out: ${why("not-a-meeting").length} not a public body, ` +
+      `${why("cancelled").length} cancelled or postponed.`
+  );
+  const review = why("review");
+  if (review.length > 0) {
+    console.log(`\n  ${review.length} need a human call (could be a real open meeting):`);
+    for (const item of review) console.log(`    ${item.town}: ${item.title}`);
+  }
+  await writeFile(
+    join(outDir, "skipped.json"),
+    JSON.stringify({ generated_at: new Date().toISOString(), skipped }, null, 2),
+    "utf8"
+  );
   console.log(`Drafts written to ${outDir}`);
   console.log("\nNothing has been sent. Sending is a separate, deliberate step.");
 }

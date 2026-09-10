@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T18:23:37.522Z",
+  "generated_at": "2026-09-10T18:25:34.337Z",
   "drafts": [
     {
       "town": "Boxford",
@@ -30,20 +30,6 @@
       "file": "2026-09-10-andover-asc-ahs-future-subcommittee.txt"
     },
     {
-      "town": "West Newbury",
-      "body": "Water Department",
-      "date": "2026-09-10",
-      "time": "10:00",
-      "timezone": "America/New_York",
-      "location": "- West Newbury MA 1985",
-      "joinable": [],
-      "source": "https://www.wnewbury.org/Calendar.aspx?EID=929",
-      "lead_hours": -4,
-      "verdict": "past",
-      "subject": "Notice of intent to record an open meeting - Water Department, West Newbury",
-      "file": "2026-09-10-west-newbury-water-department.txt"
-    },
-    {
       "town": "Andover",
       "body": "250th Anniversary Committee",
       "date": "2026-09-10",
@@ -70,20 +56,6 @@
       "verdict": "too-late",
       "subject": "Notice of intent to record an open meeting - Andover Council on Aging Advisory Board Meeting, Andover",
       "file": "2026-09-10-andover-andover-council-on-aging-advisory-board-meeting.txt"
-    },
-    {
-      "town": "Lawrence",
-      "body": "LAWRENCE SQUARE PROJECT",
-      "date": "2026-09-10",
-      "time": "16:00",
-      "timezone": "America/New_York",
-      "location": "<p>This Rededication will be at the Intersection of Essex Street and Broadway</p> - Lawrence MA 01840",
-      "joinable": [],
-      "source": "https://www.cityoflawrence.com/Calendar.aspx?EID=4357",
-      "lead_hours": 2,
-      "verdict": "too-late",
-      "subject": "Notice of intent to record an open meeting - LAWRENCE SQUARE PROJECT, Lawrence",
-      "file": "2026-09-10-lawrence-lawrence-square-project.txt"
     },
     {
       "town": "Lawrence",
@@ -196,34 +168,6 @@
       "verdict": "too-late",
       "subject": "Notice of intent to record an open meeting - Newbury Historical Commission Meeting, Newbury",
       "file": "2026-09-10-newbury-newbury-historical-commission-meeting.txt"
-    },
-    {
-      "town": "Boxford",
-      "body": "CANCELLED: Permanent Building Committee",
-      "date": "2026-09-10",
-      "time": "19:30",
-      "timezone": "America/New_York",
-      "location": "- Boxford MA 01921",
-      "joinable": [],
-      "source": "https://www.boxfordma.gov/Calendar.aspx?EID=1598",
-      "lead_hours": 5,
-      "verdict": "too-late",
-      "subject": "Notice of intent to record an open meeting - CANCELLED: Permanent Building Committee, Boxford",
-      "file": "2026-09-10-boxford-cancelled-permanent-building-committee.txt"
-    },
-    {
-      "town": "Methuen",
-      "body": "9/11 Remembrance Ceremony - Methuen Fire Department",
-      "date": "2026-09-11",
-      "time": "09:30",
-      "timezone": "America/New_York",
-      "location": "Central Fire Station Headquarters - 24 Lowell Street Methuen MA 01844",
-      "joinable": [],
-      "source": "https://www.methuen.gov/Calendar.aspx?EID=2102",
-      "lead_hours": 19,
-      "verdict": "too-late",
-      "subject": "Notice of intent to record an open meeting - 9/11 Remembrance Ceremony - Methuen Fire Department, Methuen",
-      "file": "2026-09-11-methuen-9-11-remembrance-ceremony-methuen-fire-department.txt"
     },
     {
       "town": "Boxford",
@@ -380,34 +324,6 @@
       "file": "2026-09-14-west-newbury-conservation-commission.txt"
     },
     {
-      "town": "Lawrence",
-      "body": "Spanish Heritage Month",
-      "date": "2026-09-15",
-      "time": "08:00",
-      "timezone": "America/New_York",
-      "location": "- Lawrence MA 01840",
-      "joinable": [],
-      "source": "https://www.cityoflawrence.com/Calendar.aspx?EID=4225",
-      "lead_hours": 114,
-      "verdict": "sendable",
-      "subject": "Notice of intent to record an open meeting - Spanish Heritage Month, Lawrence",
-      "file": "2026-09-15-lawrence-spanish-heritage-month.txt"
-    },
-    {
-      "town": "Lawrence",
-      "body": "Spanish Heritage Month",
-      "date": "2026-09-15",
-      "time": "08:00",
-      "timezone": "America/New_York",
-      "location": "- Lawrence MA 01840",
-      "joinable": [],
-      "source": "https://www.cityoflawrence.com/Calendar.aspx?EID=4225&month=9&year=2026&day=10&calType=0",
-      "lead_hours": 114,
-      "verdict": "sendable",
-      "subject": "Notice of intent to record an open meeting - Spanish Heritage Month, Lawrence",
-      "file": "2026-09-15-lawrence-spanish-heritage-month.txt"
-    },
-    {
       "town": "Amesbury",
       "body": "Merrimack Valley Workforce Board Special Meeting",
       "date": "2026-09-15",
@@ -448,20 +364,6 @@
       "verdict": "sendable",
       "subject": "Notice of intent to record an open meeting - Merrimack Valley Workforce Board, West Newbury",
       "file": "2026-09-15-west-newbury-merrimack-valley-workforce-board.txt"
-    },
-    {
-      "town": "Lawrence",
-      "body": "Electric Connections Improvements Forum",
-      "date": "2026-09-15",
-      "time": "13:00",
-      "timezone": "America/New_York",
-      "location": "<p>The Massachusetts Office of Energy and Environmental Affairs (EEA) is hosting the second semi-annual <em data-pasted=\"true\">Electric Connections&nbsp;Improvements&nbsp;Forum</em> on <strong>Tuesday, September 15, 2026 from 1:00 PM to 4:00 PM</strong>. The event will be held in person at 1 Ashburton Place, Boston, MA 02108, on the 2nd floor in Conference Rooms C, D and E. <strong>Please</strong> <strong>fill out&nbsp;</strong><a href=\"https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Fh2GPrdIDkqYBowE2Bt7KsY8b0V8k2hAjuqgIeNJC55UNUlDS04zOVRXOTBOWDVQSVZFVFBWUk44Vy4u\" target=\"_blank\" title=\"https://forms.office.com/Pages/ResponsePage.aspx?id=Fh2GPrdIDkqYBowE2Bt7KsY8b0V8k2hAjuqgIeNJC55UQ1dNM1EzTE9LQkNPWEJJWlM2TE8wNkZQVy4u\"><strong>this form</strong></a><strong>&nbsp;to register.</strong> &nbsp;</p><p><br></p><p><br></p> - One Ashburton Place 2nd Floor Conf Room Boston MA",
-      "joinable": [],
-      "source": "https://www.cityoflawrence.com/Calendar.aspx?EID=4326",
-      "lead_hours": 119,
-      "verdict": "sendable",
-      "subject": "Notice of intent to record an open meeting - Electric Connections Improvements Forum, Lawrence",
-      "file": "2026-09-15-lawrence-electric-connections-improvements-forum.txt"
     },
     {
       "town": "Salisbury",
@@ -520,48 +422,6 @@
       "file": "2026-09-15-newbury-conservation-commission-meeting.txt"
     },
     {
-      "town": "Newbury",
-      "body": "ANNOUNCEMENT - Newbury Open Space Public Meeting #2",
-      "date": "2026-09-15",
-      "time": "19:00",
-      "timezone": "America/New_York",
-      "location": "<p style=\"box-sizing: border-box; --categoryColor: #31312a; margin-top: 0px; margin-bottom: 1rem; font-style: normal; font-weight: 400; color: rgb(24, 56, 29); font-family: Montserrat; font-size: 16px; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Location: <u>Newbury Council on Aging, 12 Kent Way, Byfield</u>, first door on the right after you enter the building</p> - Byfield MA 01922",
-      "joinable": [],
-      "source": "https://www.newburyma.gov/Calendar.aspx?EID=4373",
-      "lead_hours": 125,
-      "verdict": "sendable",
-      "subject": "Notice of intent to record an open meeting - ANNOUNCEMENT - Newbury Open Space Public Meeting #2, Newbury",
-      "file": "2026-09-15-newbury-announcement-newbury-open-space-public-meeting-2.txt"
-    },
-    {
-      "town": "Lawrence",
-      "body": "Blood Pressure & Diabetes Prevention Clinic",
-      "date": "2026-09-16",
-      "time": "09:30",
-      "timezone": "America/New_York",
-      "location": "- 155 Haverhill Street Lawrence MA 01840",
-      "joinable": [],
-      "source": "https://www.cityoflawrence.com/Calendar.aspx?EID=4337&month=9&year=2026&day=10&calType=0",
-      "lead_hours": 139,
-      "verdict": "sendable",
-      "subject": "Notice of intent to record an open meeting - Blood Pressure & Diabetes Prevention Clinic, Lawrence",
-      "file": "2026-09-16-lawrence-blood-pressure-diabetes-prevention-clinic.txt"
-    },
-    {
-      "town": "Newbury",
-      "body": "CANCELLED - Newbury Planning Board Meeting via Zoom",
-      "date": "2026-09-16",
-      "time": "19:00",
-      "timezone": "America/New_York",
-      "location": "- Byfield MA 01922",
-      "joinable": [],
-      "source": "https://www.newburyma.gov/Calendar.aspx?EID=4021",
-      "lead_hours": 149,
-      "verdict": "sendable",
-      "subject": "Notice of intent to record an open meeting - CANCELLED - Newbury Planning Board Meeting via Zoom, Newbury",
-      "file": "2026-09-16-newbury-cancelled-newbury-planning-board-meeting-via-zoom.txt"
-    },
-    {
       "town": "Salisbury",
       "body": "Conservation Commission Meeting",
       "date": "2026-09-16",
@@ -602,20 +462,6 @@
       "verdict": "sendable",
       "subject": "Notice of intent to record an open meeting - Conservation Commission Meeting, Methuen",
       "file": "2026-09-17-methuen-conservation-commission-meeting.txt"
-    },
-    {
-      "town": "Boxford",
-      "body": "Apple Festival",
-      "date": "2026-09-19",
-      "time": "10:00",
-      "timezone": "America/New_York",
-      "location": "- Boxford MA 01921",
-      "joinable": [],
-      "source": "https://www.boxfordma.gov/Calendar.aspx?EID=1582",
-      "lead_hours": 212,
-      "verdict": "sendable",
-      "subject": "Notice of intent to record an open meeting - Apple Festival, Boxford",
-      "file": "2026-09-19-boxford-apple-festival.txt"
     },
     {
       "town": "Newbury",
