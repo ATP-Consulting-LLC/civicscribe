@@ -511,7 +511,10 @@ body:has(.home-hero) .site-main {
 
 /* Search hits inside the front-page panel. These are REAL utterances from the
    real archive (see realSearchSample in page.tsx), so the speaker names and
-   wording are verbatim public record and are never rewritten or simplified. */
+   wording are verbatim public record and are never rewritten or simplified.
+   They ARE excerpted: snippetAround cuts a window around the matched word and
+   marks it, because a full turn of speech runs to thousands of characters and
+   three of them made this panel taller than the hero. Ellipses show the cut. */
 .home-results__count {
   margin: 0 0 1.25rem;
   font-size: 0.9375rem;

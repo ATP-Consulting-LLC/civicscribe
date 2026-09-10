@@ -7,6 +7,8 @@ import { LiveNow } from "@/components/dashboard/LiveNow";
 import ContactForm from "@/components/contact/ContactForm";
 import { isStaff, currentUser } from "@/lib/auth/server";
 import { formatTimestamp } from "@/components/dashboard/meeting-format";
+import { HighlightedText } from "@/components/meeting/transcript-utils";
+import { snippetAround, tokenize } from "@/lib/text/highlight";
 import type { UtteranceSearchResult } from "@/lib/types";
 
 // Role-aware + fresh per request: the visible meeting set depends on staff
@@ -54,6 +56,23 @@ async function realSearchSample(): Promise<{
     }
   }
   return null;
+}
+
+/**
+ * Render one hit as a short excerpt with the searched word marked, not as the
+ * whole turn of speech. Utterances run to thousands of characters; three of
+ * them verbatim made this panel taller than the hero and buried the very word
+ * the panel is meant to prove you can find.
+ */
+function renderSnippet(text: string, tokens: string[]) {
+  const { text: body, clippedStart, clippedEnd } = snippetAround(text, tokens);
+  return (
+    <>
+      {clippedStart && "… "}
+      <HighlightedText text={body} tokens={tokens} />
+      {clippedEnd && "…"}
+    </>
+  );
 }
 
 function TileIcon({ children }: { children: React.ReactNode }) {
@@ -157,6 +176,7 @@ export default async function HomePage() {
   }
 
   const sample = await realSearchSample();
+  const tokens = sample ? tokenize(sample.term) : [];
 
   return (
     <div className="home">
@@ -247,7 +267,7 @@ export default async function HomePage() {
                           `Speaker ${utterance.speaker_label}`}
                         :
                       </span>{" "}
-                      {utterance.text}
+                      {renderSnippet(utterance.text, tokens)}
                     </p>
                   </li>
                 ))}

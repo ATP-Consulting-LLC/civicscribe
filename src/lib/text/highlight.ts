@@ -69,3 +69,70 @@ function wordMatches(
   if (tokens.some((t) => lower.includes(t))) return true;
   return tokenStems.has(stem(lower));
 }
+
+export interface Snippet {
+  /** The windowed text. Feed this to HighlightedText, not the full utterance. */
+  text: string;
+  /** True when characters were dropped before/after the window. */
+  clippedStart: boolean;
+  clippedEnd: boolean;
+}
+
+/**
+ * Cut a short window of text centred on the first token match.
+ *
+ * A search hit is evidence that a word was said, not a reason to reprint the
+ * whole turn: the front page was rendering three verbatim utterances of 686,
+ * 4633 and 2744 characters, a 2066px slab taller than the hero and 41% of the
+ * page, in which the searched word was invisible. The window keeps the match
+ * plus enough either side to read it in context.
+ *
+ * Boundaries are snapped outward to whitespace so a snippet never begins or
+ * ends mid-word. If no token matches (the store's stemming is broader than
+ * ours), the window falls back to the head of the text rather than to nothing.
+ */
+export function snippetAround(
+  text: string,
+  tokens: string[],
+  maxChars = 180
+): Snippet {
+  const trimmed = text.trim();
+  if (trimmed.length <= maxChars) {
+    return { text: trimmed, clippedStart: false, clippedEnd: false };
+  }
+
+  // Reuse the highlighter so "where does the match start" answers with the same
+  // stem-aware rule the <mark> uses. Two rules would drift and clip off the very
+  // word the panel exists to show.
+  let matchAt = -1;
+  let offset = 0;
+  for (const segment of highlightSegments(trimmed, tokens)) {
+    if (segment.marked) {
+      matchAt = offset;
+      break;
+    }
+    offset += segment.text.length;
+  }
+
+  // Aim to show a little run-up to the match, then fill the rest of the budget.
+  const lead = Math.floor(maxChars / 3);
+  let start = matchAt < 0 ? 0 : Math.max(0, matchAt - lead);
+  let end = Math.min(trimmed.length, start + maxChars);
+  // Re-anchor when the window hit the end: keep it maxChars wide, not shorter.
+  start = Math.max(0, Math.min(start, trimmed.length - maxChars));
+
+  if (start > 0) {
+    const space = trimmed.indexOf(" ", start);
+    start = space === -1 ? start : space + 1;
+  }
+  if (end < trimmed.length) {
+    const space = trimmed.lastIndexOf(" ", end);
+    end = space > start ? space : end;
+  }
+
+  return {
+    text: trimmed.slice(start, end).trim(),
+    clippedStart: start > 0,
+    clippedEnd: end < trimmed.length,
+  };
+}
