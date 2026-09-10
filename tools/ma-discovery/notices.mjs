@@ -98,10 +98,22 @@ export function isRecordableBody(title, roster = []) {
     const nb = norm(b);
     return nb.length > 3 && (n.includes(nb) || nb.includes(n));
   });
-  if (matched) return { ok: true, reason: "roster" };
-  if (BODY_WORDS.test(t)) return { ok: true, reason: "governance-word" };
+  // A roster match is strong but not decisive on its own. The town publishes
+  // agendas under "Newbury Town Library", which made "Newbury Town Library's
+  // 100th Anniversary" match the roster and draft a notice to record a birthday
+  // party. When a matched title ALSO carries a celebration word, a person
+  // decides.
+  const CELEBRATION = /\bceremony\b|\bfestival\b|\bcelebration\b|\banniversary\b|\bheritage month\b|\bopen house\b|\bgroundbreaking\b|\bribbon.cutting\b/i;
+  if (matched) {
+    return CELEBRATION.test(t) && !BODY_WORDS.test(t)
+      ? { ok: false, reason: "review" }
+      : { ok: true, reason: "roster" };
+  }
+  if (BODY_WORDS.test(t) && !CELEBRATION.test(t)) {
+    return { ok: true, reason: "governance-word" };
+  }
 
-  if (/^announcement\b|\bceremony\b|\bfestival\b|\bclinic\b|\bheritage month\b|\bopen house\b|\bcelebration\b|\bfilm\b|\bsculpture\b/i.test(t)) {
+  if (CELEBRATION.test(t) || /^announcement\b|\bclinic\b|\bfilm\b|\bsculpture\b/i.test(t)) {
     return { ok: false, reason: "not-a-meeting" };
   }
 
@@ -214,7 +226,7 @@ async function main() {
   const catalogue = JSON.parse(await readFile(cataloguePath, "utf8"));
 
   const today = new Date().toISOString().slice(0, 10);
-  const targets = [];
+  let targets = [];
   const skipped = [];
   for (const muni of catalogue.municipalities) {
     for (const notice of muni.notices ?? []) {
@@ -244,6 +256,17 @@ async function main() {
       });
     }
   }
+
+  // One meeting, one notice. A CivicPlus calendar links the same event by two
+  // URL forms (bare EID, and EID plus the month/day it was viewed from), which
+  // produced two identical letters to the same chair about the same meeting.
+  // De-duplicate on what identifies the MEETING, not on the URL that found it.
+  const byMeeting = new Map();
+  for (const target of targets) {
+    const key = `${target.town}|${target.body.toLowerCase()}|${target.date}|${target.time}`;
+    if (!byMeeting.has(key)) byMeeting.set(key, target);
+  }
+  targets = [...byMeeting.values()];
 
   targets.sort((a, b) => (a.date + a.time + a.town).localeCompare(b.date + b.time + b.town));
 

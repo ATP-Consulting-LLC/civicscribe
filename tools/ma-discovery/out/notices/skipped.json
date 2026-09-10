@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T18:25:34.340Z",
+  "generated_at": "2026-09-10T18:27:26.935Z",
   "skipped": [
     {
       "town": "Lawrence",
@@ -50,6 +50,11 @@
       "town": "Newbury",
       "title": "CANCELLED - Newbury Planning Board Meeting via Zoom",
       "why": "cancelled"
+    },
+    {
+      "town": "Newbury",
+      "title": "Newbury Town Library's 100th Anniversary",
+      "why": "review"
     },
     {
       "town": "West Newbury",

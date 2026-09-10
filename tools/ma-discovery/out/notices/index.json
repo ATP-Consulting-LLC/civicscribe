@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-10T18:25:34.337Z",
+  "generated_at": "2026-09-10T18:27:26.933Z",
   "drafts": [
     {
       "town": "Boxford",
@@ -199,20 +199,6 @@
     },
     {
       "town": "Amesbury",
-      "body": "Amesbury School Committee Finance & Facilities Sub-Committee Meeting",
-      "date": "2026-09-14",
-      "time": "18:00",
-      "timezone": "America/New_York",
-      "location": "- Amesbury MA 01913",
-      "joinable": [],
-      "source": "https://www.amesburyma.gov/Calendar.aspx?EID=6525&month=9&year=2026&day=14&calType=0",
-      "lead_hours": 100,
-      "verdict": "sendable",
-      "subject": "Notice of intent to record an open meeting - Amesbury School Committee Finance & Facilities Sub-Committee Meeting, Amesbury",
-      "file": "2026-09-14-amesbury-amesbury-school-committee-finance-facilities-sub-committee-meeting.txt"
-    },
-    {
-      "town": "Amesbury",
       "body": "Poet Laureate Support Committee Meeting",
       "date": "2026-09-14",
       "time": "18:30",
@@ -220,20 +206,6 @@
       "location": "- Amesbury MA 01913",
       "joinable": [],
       "source": "https://www.amesburyma.gov/Calendar.aspx?EID=6519",
-      "lead_hours": 100,
-      "verdict": "sendable",
-      "subject": "Notice of intent to record an open meeting - Poet Laureate Support Committee Meeting, Amesbury",
-      "file": "2026-09-14-amesbury-poet-laureate-support-committee-meeting.txt"
-    },
-    {
-      "town": "Amesbury",
-      "body": "Poet Laureate Support Committee Meeting",
-      "date": "2026-09-14",
-      "time": "18:30",
-      "timezone": "America/New_York",
-      "location": "- Amesbury MA 01913",
-      "joinable": [],
-      "source": "https://www.amesburyma.gov/Calendar.aspx?EID=6519&month=9&year=2026&day=14&calType=0",
       "lead_hours": 100,
       "verdict": "sendable",
       "subject": "Notice of intent to record an open meeting - Poet Laureate Support Committee Meeting, Amesbury",
@@ -462,20 +434,6 @@
       "verdict": "sendable",
       "subject": "Notice of intent to record an open meeting - Conservation Commission Meeting, Methuen",
       "file": "2026-09-17-methuen-conservation-commission-meeting.txt"
-    },
-    {
-      "town": "Newbury",
-      "body": "Newbury Town Library's 100th Anniversary",
-      "date": "2026-09-19",
-      "time": "10:00",
-      "timezone": "America/New_York",
-      "location": "- 0 Lunt Street Byfield MA 01922",
-      "joinable": [],
-      "source": "https://www.newburyma.gov/Calendar.aspx?EID=4346",
-      "lead_hours": 212,
-      "verdict": "sendable",
-      "subject": "Notice of intent to record an open meeting - Newbury Town Library's 100th Anniversary, Newbury",
-      "file": "2026-09-19-newbury-newbury-town-library-s-100th-anniversary.txt"
     },
     {
       "town": "Methuen",
