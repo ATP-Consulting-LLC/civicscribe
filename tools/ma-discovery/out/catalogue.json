@@ -1,0 +1,1674 @@
+{
+  "generated_at": "2026-09-10T18:21:31.935Z",
+  "region": "Merrimack Valley",
+  "crawler": "CivicScribeBot/1.0 (+https://civicscribe.us/about-the-crawler; meeting-notice discovery)",
+  "legal_basis": "Public meeting notices posted under G.L. c. 30A, s. 20. Public pages only, robots.txt honoured, rate limited, no authentication. Recording an open session additionally requires notifying the chair under s. 20(c), which is handled outside this tool and is a precondition of any capture.",
+  "municipalities": [
+    {
+      "name": "Lawrence",
+      "kind": "city",
+      "gateway": true,
+      "pop2020": 89143,
+      "site": "https://www.cityoflawrence.com",
+      "reachable": true,
+      "robots": "parsed",
+      "platforms": [
+        "CivicPlus / CivicEngage"
+      ],
+      "noticePages": [
+        {
+          "label": "10",
+          "url": "https://www.cityoflawrence.com/calendar.aspx?view=list&year=2026&month=9&day=10&CID=29,27,26,33,32,30,23,31,14,34,25,22,28,35",
+          "score": 5
+        },
+        {
+          "label": "15",
+          "url": "https://www.cityoflawrence.com/calendar.aspx?view=list&year=2026&month=9&day=15&CID=29,27,26,33,32,30,23,31,14,34,25,22,28,35",
+          "score": 5
+        },
+        {
+          "label": "16",
+          "url": "https://www.cityoflawrence.com/calendar.aspx?view=list&year=2026&month=9&day=16&CID=29,27,26,33,32,30,23,31,14,34,25,22,28,35",
+          "score": 5
+        },
+        {
+          "label": "17",
+          "url": "https://www.cityoflawrence.com/calendar.aspx?view=list&year=2026&month=9&day=17&CID=29,27,26,33,32,30,23,31,14,34,25,22,28,35",
+          "score": 5
+        },
+        {
+          "label": "18",
+          "url": "https://www.cityoflawrence.com/calendar.aspx?view=list&year=2026&month=9&day=18&CID=29,27,26,33,32,30,23,31,14,34,25,22,28,35",
+          "score": 5
+        }
+      ],
+      "joinable": [
+        {
+          "kind": "zoom",
+          "url": "https://us06web.zoom.us/j/81736974595"
+        }
+      ],
+      "streams": [
+        {
+          "kind": "youtube",
+          "url": "https://www.youtube.com/user/LawrenceCityCouncil/videos"
+        }
+      ],
+      "bodies": [
+        "Airport Commission",
+        "Bellevue Cemetery Board",
+        "Board of Health",
+        "Board of Registrar",
+        "Budget Finance Committee",
+        "City Council",
+        "Commission on Disability",
+        "Committee on the Whole",
+        "Conservation Commission",
+        "Economic Development Committee",
+        "Greater Lawrence Sanitary District",
+        "Historical Commission",
+        "Housing Committee",
+        "Lawrence Alliance for Education LAE",
+        "Lawrence Cultural Council",
+        "Lawrence Housing Authority LHA",
+        "Lawrence School Committee",
+        "Library Trustees",
+        "Licensing Board",
+        "Ordinance Intergovernmental Relations Co",
+        "Personnel Committee",
+        "Planning Board",
+        "Prospect Hill Historical District Commis",
+        "Public Safety Committee",
+        "Redevelopment Authority",
+        "Retirement Board",
+        "Zoning Board of Appeals"
+      ],
+      "notices": [
+        {
+          "title": "LAWRENCE SQUARE PROJECT",
+          "url": "https://www.cityoflawrence.com/Calendar.aspx?EID=4357",
+          "date": "2026-09-10",
+          "start_time": "16:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "<p>This Rededication will be at the Intersection of Essex Street and Broadway</p> - Lawrence MA 01840",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "COMMISSION on DISABILITIES",
+          "url": "https://www.cityoflawrence.com/Calendar.aspx?EID=4358",
+          "date": "2026-09-10",
+          "start_time": "17:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "Lawrence City Hall - 200 Common Street Lawrence MA 01840",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "City Council - Personnel Committee",
+          "url": "https://www.cityoflawrence.com/Calendar.aspx?EID=4355",
+          "date": "2026-09-10",
+          "start_time": "18:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "Lawrence City Hall - 200 Common Street Lawrence MA 01840",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Spanish Heritage Month",
+          "url": "https://www.cityoflawrence.com/Calendar.aspx?EID=4225",
+          "date": "2026-09-15",
+          "start_time": "08:00",
+          "timezone": "America/New_York",
+          "weekday": 2,
+          "location": "- Lawrence MA 01840",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "MERRIMACK VALLEY WORKFORCE BOARD - SPECIAL MEETING",
+          "url": "https://www.cityoflawrence.com/Calendar.aspx?EID=4356",
+          "date": "2026-09-15",
+          "start_time": "08:30",
+          "timezone": "America/New_York",
+          "weekday": 2,
+          "location": "<p data-pasted=\"true\">Remote Meeting via Zoom&nbsp;</p><p>Meeting ID: 863 8458 6600</p><p>Passcode: 102102</p> - Lawrence MA 01840",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Electric Connections Improvements Forum",
+          "url": "https://www.cityoflawrence.com/Calendar.aspx?EID=4326",
+          "date": "2026-09-15",
+          "start_time": "13:00",
+          "timezone": "America/New_York",
+          "weekday": 2,
+          "location": "<p>The Massachusetts Office of Energy and Environmental Affairs (EEA) is hosting the second semi-annual <em data-pasted=\"true\">Electric Connections&nbsp;Improvements&nbsp;Forum</em> on <strong>Tuesday, September 15, 2026 from 1:00 PM to 4:00 PM</strong>. The event will be held in person at 1 Ashburton Place, Boston, MA 02108, on the 2nd floor in Conference Rooms C, D and E. <strong>Please</strong> <strong>fill out&nbsp;</strong><a href=\"https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Fh2GPrdIDkqYBowE2Bt7KsY8b0V8k2hAjuqgIeNJC55UNUlDS04zOVRXOTBOWDVQSVZFVFBWUk44Vy4u\" target=\"_blank\" title=\"https://forms.office.com/Pages/ResponsePage.aspx?id=Fh2GPrdIDkqYBowE2Bt7KsY8b0V8k2hAjuqgIeNJC55UQ1dNM1EzTE9LQkNPWEJJWlM2TE8wNkZQVy4u\"><strong>this form</strong></a><strong>&nbsp;to register.</strong> &nbsp;</p><p><br></p><p><br></p> - One Ashburton Place 2nd Floor Conf Room Boston MA",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Spanish Heritage Month",
+          "url": "https://www.cityoflawrence.com/Calendar.aspx?EID=4225&month=9&year=2026&day=10&calType=0",
+          "date": "2026-09-15",
+          "start_time": "08:00",
+          "timezone": "America/New_York",
+          "weekday": 2,
+          "location": "- Lawrence MA 01840",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Blood Pressure & Diabetes Prevention Clinic",
+          "url": "https://www.cityoflawrence.com/Calendar.aspx?EID=4337&month=9&year=2026&day=10&calType=0",
+          "date": "2026-09-16",
+          "start_time": "09:30",
+          "timezone": "America/New_York",
+          "weekday": 3,
+          "location": "- 155 Haverhill Street Lawrence MA 01840",
+          "joinable": [],
+          "detail_source": "ics"
+        }
+      ],
+      "pagesFetched": 23,
+      "notes": []
+    },
+    {
+      "name": "Lowell",
+      "kind": "city",
+      "gateway": true,
+      "pop2020": 115554,
+      "site": "https://www.lowellma.gov",
+      "reachable": true,
+      "robots": "parsed",
+      "platforms": [
+        "CivicPlus / CivicEngage"
+      ],
+      "noticePages": [
+        {
+          "label": "City Council & Boards",
+          "url": "https://www.lowellma.gov/agendacenter",
+          "score": 16
+        },
+        {
+          "label": "14",
+          "url": "https://www.lowellma.gov/calendar.aspx?view=list&year=2026&month=9&day=14&CID=62,64,14",
+          "score": 5
+        },
+        {
+          "label": "Customer Assistance Event",
+          "url": "https://www.lowellma.gov/Calendar.aspx?EID=2933",
+          "score": 5
+        },
+        {
+          "label": "View All Events",
+          "url": "https://www.lowellma.gov/calendar.aspx?CID=62,64,14",
+          "score": 5
+        }
+      ],
+      "joinable": [],
+      "streams": [
+        {
+          "kind": "youtube",
+          "url": "https://www.youtube.com/channel/UCveqRNQP1aDURigsBOwYZ8A"
+        },
+        {
+          "kind": "youtube",
+          "url": "https://www.youtube.com/@LTCLowellMA"
+        },
+        {
+          "kind": "youtube",
+          "url": "https://www.youtube.com/live/IflUy7x1yLE?si=M6ru9ZXWOPnYZTEA"
+        },
+        {
+          "kind": "youtube",
+          "url": "https://www.youtube.com/live/QB3ZP6jYYcQ?si=skESmpOeIPaiGUmI"
+        },
+        {
+          "kind": "youtube",
+          "url": "https://www.youtube.com/live/We9uA--GIKA?si=c35RCpuRB4D1kU5I"
+        },
+        {
+          "kind": "youtube",
+          "url": "https://youtu.be/Ac2FevnrEng?si=yu6S1_MJg_NKd9dz"
+        }
+      ],
+      "bodies": [
+        "AD HOC On Building Naming",
+        "Affordable Housing Trust",
+        "Board of Assessors",
+        "Board of Disabilities Commission",
+        "Board of Health",
+        "Board of Parks",
+        "CITY COUNCIL EXECUTIVE SESSION MINUTES",
+        "Cemetery Commission",
+        "Citizen Advisory Committee",
+        "City Council",
+        "City Council Ad Hoc Charter Review Votin",
+        "City Council Ad Hoc Subcommittee Restora",
+        "City Council Arts and Culture Sub Commit",
+        "City Council Auditor Clerk Oversight and",
+        "City Council Cannabis Control Subcommitt",
+        "City Council Downtown Redevelopment Sub",
+        "City Council Economic Downtown Developme",
+        "City Council Education Partnerships Sub",
+        "City Council Election Laws Redistricting",
+        "City Council Environment Flood Issues Su",
+        "City Council Finance Sub Committee",
+        "City Council Flood Issues Sub Committee",
+        "City Council Housing Sub Committee",
+        "City Council Joint NeighborhoodsFlood Is",
+        "City Council Municipal Facilities Sub Co",
+        "City Council Neighborhoods Sub Committee",
+        "City Council NonProfit Organizations Sub",
+        "City Council Parks and Recreation Sub Co",
+        "City Council Personnel Sub Committee",
+        "City Council Public Safety Sub Committee",
+        "City Council Rules Sub Committee",
+        "City Council Rules and Election Law Subc",
+        "City Council Senior Citizens Sub Committ",
+        "City Council Special Events Sub Committe",
+        "City Council Substance Abuse Sub Committ",
+        "City Council Technologies and Utilities",
+        "City Council Transportation Sub Committe",
+        "City Council Veterans Subcommittee",
+        "City Council Youth Services Sub Committe",
+        "City Council Zoning Sub Committee",
+        "Civic Stadium Commission",
+        "Community Preservation Committee",
+        "Conservation Commission",
+        "Council on Aging Board",
+        "Cultural Council",
+        "Election Commission",
+        "Historic Board",
+        "HungerHomeless Commission",
+        "License Commission",
+        "Monument Committee",
+        "Planning Board",
+        "Pollard Memorial Library Board of Truste",
+        "Retirement Board",
+        "Safety Subcommittee",
+        "School Building Committee",
+        "School Committee",
+        "School Committee College Career Readines",
+        "School Committee Curriculum Instruction",
+        "School Committee Equity Access Subcommit",
+        "School Committee Facilities Transportati",
+        "School Committee Family Community Engage",
+        "School Committee Finance Subcommittee",
+        "School Committee Human Resources Labor R",
+        "School Committee Policy Governance Subco",
+        "School Committee School Improvement Perf",
+        "School Committee Special Education Subco",
+        "Solid Waste Advisory Committee",
+        "Sustainability Council",
+        "Veterans Commission",
+        "Zoning Board of Appeals"
+      ],
+      "notices": [
+        {
+          "title": "City Council Regular Meeting",
+          "url": "https://www.lowellma.gov/AgendaCenter/ViewFile/Agenda/_09082026-4023?html=true",
+          "date": "2026-09-08",
+          "start_time": null,
+          "timezone": null,
+          "weekday": null,
+          "location": null,
+          "joinable": [],
+          "detail_source": "html"
+        },
+        {
+          "title": "City Council Regular Meeting",
+          "url": "https://www.lowellma.gov/AgendaCenter/ViewFile/Agenda/_08252026-4013?html=true",
+          "date": "2026-08-25",
+          "start_time": null,
+          "timezone": null,
+          "weekday": null,
+          "location": null,
+          "joinable": [],
+          "detail_source": "html"
+        },
+        {
+          "title": "City Council Regular Meeting",
+          "url": "https://www.lowellma.gov/AgendaCenter/ViewFile/Agenda/_08112026-3997?html=true",
+          "date": "2026-08-11",
+          "start_time": null,
+          "timezone": null,
+          "weekday": null,
+          "location": null,
+          "joinable": [],
+          "detail_source": "html"
+        }
+      ],
+      "pagesFetched": 9,
+      "notes": [
+        "robots.txt disallows https://connect.civicplus.com/referral"
+      ]
+    },
+    {
+      "name": "Haverhill",
+      "kind": "city",
+      "gateway": true,
+      "pop2020": 67787,
+      "site": "https://www.haverhillma.gov",
+      "reachable": true,
+      "robots": "parsed",
+      "platforms": [
+        "OpenGov"
+      ],
+      "noticePages": [
+        {
+          "label": "Agendas and Minutes",
+          "url": "https://www.haverhillma.gov/government/agendas-and-minutes/",
+          "score": 18
+        },
+        {
+          "label": "City Clerk",
+          "url": "https://www.haverhillma.gov/government/city-clerk/",
+          "score": 3
+        }
+      ],
+      "joinable": [],
+      "streams": [
+        {
+          "kind": "local-cable",
+          "url": "http://haverhillcommunitytv.org/video/point-of-reference-kaitlin-wright-election-procedures-august-2023"
+        }
+      ],
+      "bodies": [],
+      "notices": [],
+      "pagesFetched": 3,
+      "notes": [
+        "robots.txt disallows https://haverhillma.portal.opengov.com/"
+      ]
+    },
+    {
+      "name": "Methuen",
+      "kind": "city",
+      "gateway": true,
+      "pop2020": 53059,
+      "site": "https://www.methuen.gov",
+      "reachable": true,
+      "robots": "parsed",
+      "platforms": [
+        "CivicPlus / CivicEngage"
+      ],
+      "noticePages": [
+        {
+          "label": "Agenda & Minutes",
+          "url": "https://www.methuen.gov/AgendaCenter",
+          "score": 19
+        },
+        {
+          "label": "10",
+          "url": "https://www.methuen.gov/calendar.aspx?view=list&year=2026&month=9&day=10&CID=24",
+          "score": 5
+        },
+        {
+          "label": "14",
+          "url": "https://www.methuen.gov/calendar.aspx?view=list&year=2026&month=9&day=14&CID=24",
+          "score": 5
+        },
+        {
+          "label": "17",
+          "url": "https://www.methuen.gov/calendar.aspx?view=list&year=2026&month=9&day=17&CID=24",
+          "score": 5
+        },
+        {
+          "label": "21",
+          "url": "https://www.methuen.gov/calendar.aspx?view=list&year=2026&month=9&day=21&CID=24",
+          "score": 5
+        }
+      ],
+      "joinable": [],
+      "streams": [
+        {
+          "kind": "youtube",
+          "url": "https://www.youtube.com/channel/UCQ8oa7H7AsvEpJaVKhOw2Hw"
+        }
+      ],
+      "bodies": [
+        "Board of Assessors",
+        "Board of Health",
+        "Charter Review Committee",
+        "City Council",
+        "City Council Housing Committee",
+        "Commission on Disability",
+        "Commission on Trust Funds",
+        "Community Advisory Board Cable",
+        "Community Development Board",
+        "Conservation Commission",
+        "Council on Aging",
+        "Cultural Council",
+        "Economic Development",
+        "Finance Committee",
+        "Historic District Commission",
+        "Historical Commission",
+        "Housing Authority",
+        "Licensing Board",
+        "Memorials Committee",
+        "Methuen Lawrence Public Health Partnersh",
+        "Preservation Committee",
+        "Public Safety Committee",
+        "Recreation Committee",
+        "Registrars of Voters",
+        "Retirement Board",
+        "School Committee",
+        "Substance Abuse Mental Health Homelessne",
+        "Unaccepted Ways Task Force",
+        "Veterans Affairs",
+        "Youth Action",
+        "Zoning Board"
+      ],
+      "notices": [
+        {
+          "title": "Conservation Commission Special Meeting",
+          "url": "https://www.methuen.gov/Calendar.aspx?EID=2103",
+          "date": "2026-09-10",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "<p>Methuen City Hall, 2nd Floor Conference Room</p> - 41 Pleasant Street Methuen MA 01844",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Cultural Council Meeting",
+          "url": "https://www.methuen.gov/Calendar.aspx?EID=1671",
+          "date": "2026-09-14",
+          "start_time": "18:30",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "<p>Nevins Memorial Library</p> - 305 Broadway Methuen MA 01844",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Conservation Commission Meeting",
+          "url": "https://www.methuen.gov/Calendar.aspx?EID=1592",
+          "date": "2026-09-17",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "<p>Methuen City Hall, 2nd Floor Conference Room &amp; Via Zoom Conference</p> - 41 Pleasant Street Methuen MA 01844",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "City Council Regular Meeting",
+          "url": "https://www.methuen.gov/Calendar.aspx?EID=1655",
+          "date": "2026-09-21",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "<p>Methuen City Hall, Great Hall, 3rd Floor</p> - 41 Pleasant Street Methuen MA 01844",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Zoning Board of Appeals Regular Meeting",
+          "url": "https://www.methuen.gov/Calendar.aspx?EID=1556",
+          "date": "2026-09-23",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 3,
+          "location": "<p>Methuen City Hall, Great Hall, 3rd Floor</p> - 41 Pleasant Street Methuen MA 01844",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Methuen Retirement Board Meeting",
+          "url": "https://www.methuen.gov/Calendar.aspx?EID=1568",
+          "date": "2026-09-24",
+          "start_time": "09:30",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "<p>Methuen City Hall, 2nd Floor Conference Room</p> - 41 Pleasant Street Methuen MA 01844",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Historic District Commission Meeting",
+          "url": "https://www.methuen.gov/Calendar.aspx?EID=1698",
+          "date": "2026-09-24",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "<p>Methuen City Hall, Searles Building, 2nd Floor Conference Room</p> - 41 Pleasant Street Methuen MA 01844",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "9/11 Remembrance Ceremony - Methuen Fire Department",
+          "url": "https://www.methuen.gov/Calendar.aspx?EID=2102",
+          "date": "2026-09-11",
+          "start_time": "09:30",
+          "timezone": "America/New_York",
+          "weekday": 5,
+          "location": "Central Fire Station Headquarters - 24 Lowell Street Methuen MA 01844",
+          "joinable": [],
+          "detail_source": "ics"
+        }
+      ],
+      "pagesFetched": 23,
+      "notes": []
+    },
+    {
+      "name": "Newburyport",
+      "kind": "city",
+      "gateway": false,
+      "pop2020": 18289,
+      "site": "https://www.cityofnewburyport.com",
+      "reachable": false,
+      "robots": "parsed",
+      "platforms": [],
+      "noticePages": [],
+      "joinable": [],
+      "streams": [],
+      "bodies": [],
+      "notices": [],
+      "pagesFetched": 0,
+      "notes": [
+        "homepage unreachable: 403"
+      ]
+    },
+    {
+      "name": "Amesbury",
+      "kind": "city",
+      "gateway": false,
+      "pop2020": 17366,
+      "site": "https://www.amesburyma.gov",
+      "reachable": true,
+      "robots": "parsed",
+      "platforms": [
+        "CivicPlus / CivicEngage"
+      ],
+      "noticePages": [
+        {
+          "label": "14",
+          "url": "https://www.amesburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=14&CID=14",
+          "score": 5
+        },
+        {
+          "label": "15",
+          "url": "https://www.amesburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=15&CID=14",
+          "score": 5
+        },
+        {
+          "label": "16",
+          "url": "https://www.amesburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=16&CID=14",
+          "score": 5
+        },
+        {
+          "label": "17",
+          "url": "https://www.amesburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=17&CID=14",
+          "score": 5
+        },
+        {
+          "label": "24",
+          "url": "https://www.amesburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=24&CID=14",
+          "score": 5
+        }
+      ],
+      "joinable": [],
+      "streams": [
+        {
+          "kind": "youtube",
+          "url": "https://www.youtube.com/channel/UCMVaa91zFj9a4G-waxLRLsw"
+        }
+      ],
+      "bodies": [
+        "Amesbury Elementary School Building Comm",
+        "Amesbury Housing Authority",
+        "Amesbury Housing Trust",
+        "Board of Assessors",
+        "Board of Health",
+        "Board of Registrars",
+        "Boards Commissions and Committees Review",
+        "Budget and Finance Subcommittee",
+        "Cable Advisory Committee",
+        "Cemetery Advisory Commission",
+        "Charter Review Commission",
+        "City Council",
+        "City Council Standing Committee of the W",
+        "Community Preservation Committee",
+        "Conservation Commission",
+        "Council on Aging Board",
+        "Cultural Council",
+        "Design Review Committee",
+        "Disposition Committee",
+        "Economic Incentives Committee",
+        "Energy Committee",
+        "Health Care Trust Commission",
+        "Historical Commission",
+        "Joint Education Committee",
+        "Lakes and Waterways Commission",
+        "Library Board of Trustees",
+        "Liquor License Commission",
+        "Merrimack Valley Public Health Alliance",
+        "NonCity Boards and Committees",
+        "Open Space Natural Resources and Trails",
+        "Ordinance and Administration Committee",
+        "Parks Recreation Commission",
+        "Planning Board",
+        "Planning and Development Subcommittee",
+        "Retirement Board",
+        "School Committee",
+        "Technical Review Committee",
+        "Traffic Transportation Committee",
+        "Trustees of War Memorials",
+        "Zoning Board of Appeals"
+      ],
+      "notices": [
+        {
+          "title": "Amesbury School Committee Finance & Facilities Sub-Committee Meeting",
+          "url": "https://www.amesburyma.gov/Calendar.aspx?EID=6525",
+          "date": "2026-09-14",
+          "start_time": "18:00",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "- Amesbury MA 01913",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Poet Laureate Support Committee Meeting",
+          "url": "https://www.amesburyma.gov/Calendar.aspx?EID=6519",
+          "date": "2026-09-14",
+          "start_time": "18:30",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "- Amesbury MA 01913",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Planning Board Meeting",
+          "url": "https://www.amesburyma.gov/Calendar.aspx?EID=6511",
+          "date": "2026-09-14",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "<p>City Hall Annex Auditorium - 62 Friend Street Amesbury, MA 01913&nbsp;</p> - Amesbury MA 01913",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Amesbury School Committee Meeting",
+          "url": "https://www.amesburyma.gov/Calendar.aspx?EID=6526",
+          "date": "2026-09-14",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "- Amesbury MA 01913",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Merrimack Valley Workforce Board Special Meeting",
+          "url": "https://www.amesburyma.gov/Calendar.aspx?EID=6518",
+          "date": "2026-09-15",
+          "start_time": "08:30",
+          "timezone": "America/New_York",
+          "weekday": 2,
+          "location": "- Amesbury MA 01913",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Amesbury Public Library Board of Trustees Preservation Sub-Committee Meeting",
+          "url": "https://www.amesburyma.gov/Calendar.aspx?EID=6521",
+          "date": "2026-09-15",
+          "start_time": "17:00",
+          "timezone": "America/New_York",
+          "weekday": 2,
+          "location": "- Amesbury MA 01913",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Amesbury School Committee Finance & Facilities Sub-Committee Meeting",
+          "url": "https://www.amesburyma.gov/Calendar.aspx?EID=6525&month=9&year=2026&day=14&calType=0",
+          "date": "2026-09-14",
+          "start_time": "18:00",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "- Amesbury MA 01913",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Poet Laureate Support Committee Meeting",
+          "url": "https://www.amesburyma.gov/Calendar.aspx?EID=6519&month=9&year=2026&day=14&calType=0",
+          "date": "2026-09-14",
+          "start_time": "18:30",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "- Amesbury MA 01913",
+          "joinable": [],
+          "detail_source": "ics"
+        }
+      ],
+      "pagesFetched": 23,
+      "notes": []
+    },
+    {
+      "name": "Andover",
+      "kind": "town",
+      "gateway": false,
+      "pop2020": 36569,
+      "site": "https://andoverma.gov",
+      "reachable": true,
+      "robots": "parsed",
+      "platforms": [
+        "CivicPlus / CivicEngage"
+      ],
+      "noticePages": [
+        {
+          "label": "Agendas & Minutes",
+          "url": "https://andoverma.gov/agendacenter",
+          "score": 28
+        },
+        {
+          "label": "10",
+          "url": "https://andoverma.gov/calendar.aspx?view=list&year=2026&month=9&day=10&CID=14",
+          "score": 5
+        },
+        {
+          "label": "14",
+          "url": "https://andoverma.gov/calendar.aspx?view=list&year=2026&month=9&day=14&CID=14",
+          "score": 5
+        },
+        {
+          "label": "15",
+          "url": "https://andoverma.gov/calendar.aspx?view=list&year=2026&month=9&day=15&CID=14",
+          "score": 5
+        },
+        {
+          "label": "16",
+          "url": "https://andoverma.gov/calendar.aspx?view=list&year=2026&month=9&day=16&CID=14",
+          "score": 5
+        }
+      ],
+      "joinable": [],
+      "streams": [],
+      "bodies": [
+        "100B Committee",
+        "250th Anniversary Committee",
+        "375th Anniversary Committee",
+        "Andover 2020 Census Complete Count Commi",
+        "Andover Cultural Council",
+        "Andover Green Advisory Board",
+        "Andover High School Building Committee",
+        "Andover Housing Authority",
+        "Andover Housing Partnership Committee",
+        "Andover MBTA Community Working Group",
+        "Andover School Committee Meeting Notice",
+        "Andover Schools Councils",
+        "Andover Town Tree Committee",
+        "Andover Youth Services Steering Committe",
+        "Audit Committee",
+        "Ballardvale Historic District Commission",
+        "Board of Assessors",
+        "Board of Health",
+        "Board of Registrars",
+        "Central Street Historic District",
+        "Commission on Disability",
+        "Commission on Diversity Equity and Inclu",
+        "Commonwealth of Massachusetts Department",
+        "Conservation Commission",
+        "Council on Aging",
+        "Dascomb Road Zoning Task Force",
+        "Design Review Board",
+        "Economic Development Council",
+        "Elder Services Task Force",
+        "Elderly and Disabled Tax Fund Committee",
+        "Finance Committee",
+        "Historic Mill District Task Force",
+        "Housing Trust Fund Board of Trustees",
+        "Investment Committee",
+        "Master Plan Steering Committee",
+        "Memorial Hall Library Board of Trustees",
+        "OPEB Advisory Committee",
+        "Open Space Task Force",
+        "Parking Implementation Plan Committee",
+        "Patriotic Holiday Committee",
+        "Permanent Town Building Advisory Committ",
+        "Planning Board",
+        "Preservation Commission",
+        "Public Art Commission",
+        "Retirement Board",
+        "Revenue and Expenditure Task Force",
+        "Route 133 Corridor Public Enhancements W",
+        "Scholarship Committee",
+        "Select Board",
+        "Spring Grove Cemetery Trustees",
+        "StateRegional Meetings",
+        "TRIAD Council",
+        "Towle Fund",
+        "Town Governance Study Committee",
+        "Town Public Hearings",
+        "Town Seal Review Committee",
+        "Town Yard Selection Committee",
+        "Training",
+        "Trustees of Cornell Fund",
+        "Trustees of the Punchard Free School",
+        "West Elementary School Building Committe",
+        "Youth Center Building Committee",
+        "Zoning Board of Appeals",
+        "Zoning Bylaw Study Committee"
+      ],
+      "notices": [
+        {
+          "title": "ASC AHS Future Subcommittee",
+          "url": "https://andoverma.gov/Calendar.aspx?EID=10134",
+          "date": "2026-09-10",
+          "start_time": "10:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "School Admin - 2nd Floor Conf Room A - 36R Bartlet St Andover MA 01810",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "250th Anniversary Committee",
+          "url": "https://andoverma.gov/Calendar.aspx?EID=10130",
+          "date": "2026-09-10",
+          "start_time": "14:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "-",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Andover Council on Aging Advisory Board Meeting",
+          "url": "https://andoverma.gov/Calendar.aspx?EID=10132",
+          "date": "2026-09-10",
+          "start_time": "16:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "Robb Center - 30 Whittier Ct Andover MA 01810",
+          "joinable": [],
+          "detail_source": "ics"
+        }
+      ],
+      "pagesFetched": 13,
+      "notes": []
+    },
+    {
+      "name": "North Andover",
+      "kind": "town",
+      "gateway": false,
+      "pop2020": 30915,
+      "site": "https://www.northandoverma.gov",
+      "reachable": true,
+      "robots": "parsed",
+      "platforms": [
+        "CivicPlus / CivicEngage"
+      ],
+      "noticePages": [],
+      "joinable": [],
+      "streams": [],
+      "bodies": [],
+      "notices": [],
+      "pagesFetched": 2,
+      "notes": [
+        "robots.txt disallows https://connect.civicplus.com/referral"
+      ]
+    },
+    {
+      "name": "Boxford",
+      "kind": "town",
+      "gateway": false,
+      "pop2020": 8467,
+      "site": "https://www.town.boxford.ma.us",
+      "reachable": true,
+      "robots": "parsed",
+      "platforms": [
+        "CivicPlus / CivicEngage"
+      ],
+      "noticePages": [
+        {
+          "label": "Agendas and Minutes",
+          "url": "https://www.boxfordma.gov/AgendaCenter",
+          "score": 28
+        },
+        {
+          "label": "10",
+          "url": "https://www.boxfordma.gov/calendar.aspx?view=list&year=2026&month=9&day=10&CID=14",
+          "score": 5
+        },
+        {
+          "label": "14",
+          "url": "https://www.boxfordma.gov/calendar.aspx?view=list&year=2026&month=9&day=14&CID=14",
+          "score": 5
+        },
+        {
+          "label": "15",
+          "url": "https://www.boxfordma.gov/calendar.aspx?view=list&year=2026&month=9&day=15&CID=14",
+          "score": 5
+        },
+        {
+          "label": "16",
+          "url": "https://www.boxfordma.gov/calendar.aspx?view=list&year=2026&month=9&day=16&CID=14",
+          "score": 5
+        }
+      ],
+      "joinable": [],
+      "streams": [],
+      "bodies": [
+        "Adaptive Reuse of Buildings Advisory Com",
+        "Agricultural Commission",
+        "Assessors",
+        "Board of Health",
+        "Board of Registrars",
+        "Boxford Border to Boston Rail Trail Comm",
+        "Boxford Cable Access Television Corporat",
+        "Boxford Elementary School Committee",
+        "Boxford Housing Partnership Committee",
+        "Cable Advisory Committee",
+        "Collaborative for Regional Educational S",
+        "Commissioners of Trust Funds",
+        "Community Preservation Committee",
+        "Conservation Commission",
+        "Council on Aging",
+        "Cultural Arts",
+        "Essex County Commission on the Status of",
+        "FY24 FINCOM Meeting Materials and Video",
+        "Finance Committee",
+        "Historic Districts CommissionHistorical",
+        "Land Committee",
+        "Library Board of Trustees",
+        "Merrimack Valley Metropolitan Planning O",
+        "Merrimack Valley Planning Commission",
+        "Merrimack Valley Workforce Board",
+        "Northeast Massachusetts Mosquito Control",
+        "Open Space and Recreation Plan Committee",
+        "Permanent Building Committee",
+        "Planning Board",
+        "Public Health Excellence",
+        "Recreation Committee",
+        "Recycling Committee",
+        "Select Board",
+        "Small Repair Grants Trust Committee",
+        "Sustainability Committee",
+        "Traffic Advisory Committee",
+        "Tri Town School Union",
+        "Zoning Board of Appeals"
+      ],
+      "notices": [
+        {
+          "title": "Northeast Massachusetts Mosquito Control and Wetlands Management District",
+          "url": "https://www.boxfordma.gov/Calendar.aspx?EID=1601",
+          "date": "2026-09-10",
+          "start_time": "09:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "- Boxford MA 01921",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Boxford School Committee",
+          "url": "https://www.boxfordma.gov/Calendar.aspx?EID=1600",
+          "date": "2026-09-10",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "- Harry Lee Cole School 26 Middleton Road Boxford MA 01921",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "CANCELLED:  Permanent Building Committee",
+          "url": "https://www.boxfordma.gov/Calendar.aspx?EID=1598",
+          "date": "2026-09-10",
+          "start_time": "19:30",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "- Boxford MA 01921",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Council on Aging",
+          "url": "https://www.boxfordma.gov/Calendar.aspx?EID=1592",
+          "date": "2026-09-14",
+          "start_time": "16:00",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "- The Center at Ten Elm 10 Elm Street Boxford MA 01921",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Select Board",
+          "url": "https://www.boxfordma.gov/Calendar.aspx?EID=1348",
+          "date": "2026-09-14",
+          "start_time": "18:30",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "- Boxford MA 01921",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Library Trustees",
+          "url": "https://www.boxfordma.gov/Calendar.aspx?EID=1604",
+          "date": "2026-09-14",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "- Boxford Town Hall, 7A Spofford Road Conference Room 2 Boxford MA 01921",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Apple Festival",
+          "url": "https://www.boxfordma.gov/Calendar.aspx?EID=1582",
+          "date": "2026-09-19",
+          "start_time": "10:00",
+          "timezone": "America/New_York",
+          "weekday": 6,
+          "location": "- Boxford MA 01921",
+          "joinable": [],
+          "detail_source": "ics"
+        }
+      ],
+      "pagesFetched": 21,
+      "notes": []
+    },
+    {
+      "name": "Georgetown",
+      "kind": "town",
+      "gateway": false,
+      "pop2020": 8557,
+      "site": "https://www.georgetownma.gov",
+      "reachable": true,
+      "robots": "no-robots",
+      "platforms": [
+        "Revize"
+      ],
+      "noticePages": [
+        {
+          "label": "Agendas & Minutes",
+          "url": "https://www.georgetownma.gov/government/agendas___minutes.php",
+          "score": 18
+        },
+        {
+          "label": "Open Meeting Law",
+          "url": "https://www.georgetownma.gov/departments/town_clerk/open_meeting_law.php",
+          "score": 7
+        },
+        {
+          "label": "Meetings & Events",
+          "url": "https://www.georgetownma.gov/calendar.php",
+          "score": 5
+        }
+      ],
+      "joinable": [
+        {
+          "kind": "zoom",
+          "url": "https://us06web.zoom.us/j/89266486292"
+        }
+      ],
+      "streams": [],
+      "bodies": [],
+      "notices": [],
+      "pagesFetched": 4,
+      "notes": [
+        "robots.txt disallows http://cms5.revize.com/revize/georgetownma/departments/personnel.php",
+        "robots.txt disallows https://www.revize.com/"
+      ]
+    },
+    {
+      "name": "Groveland",
+      "kind": "town",
+      "gateway": false,
+      "pop2020": 6819,
+      "site": "https://www.grovelandma.com",
+      "reachable": true,
+      "robots": "no-robots",
+      "platforms": [
+        "Revize"
+      ],
+      "noticePages": [
+        {
+          "label": "Municipal Meetings/Open Meeting Law",
+          "url": "https://www.grovelandma.com/departments/clerk/board_and_committee_meetings_and_open_meeting_law.php",
+          "score": 7
+        },
+        {
+          "label": "Community Calendar",
+          "url": "https://www.grovelandma.com/calendar.php",
+          "score": 5
+        }
+      ],
+      "joinable": [],
+      "streams": [
+        {
+          "kind": "youtube",
+          "url": "https://www.youtube.com/user/GrovelandTV/videos"
+        }
+      ],
+      "bodies": [],
+      "notices": [],
+      "pagesFetched": 3,
+      "notes": [
+        "robots.txt disallows https://cms2.revize.com/revize/grovelandmalibrary/about/board_of_library_trustees.php",
+        "robots.txt disallows https://migration.revize.com/revize/grovelandmapolice/divisions/animal_control.php",
+        "robots.txt disallows https://migration.revize.com/revize/grovelandmapolice/services/forms.php"
+      ]
+    },
+    {
+      "name": "Merrimac",
+      "kind": "town",
+      "gateway": false,
+      "pop2020": 6743,
+      "site": "https://www.merrimac01860.info",
+      "reachable": false,
+      "robots": "unreachable",
+      "platforms": [],
+      "noticePages": [],
+      "joinable": [],
+      "streams": [],
+      "bodies": [],
+      "notices": [],
+      "pagesFetched": 0,
+      "notes": [
+        "homepage unreachable: fetch-failed"
+      ]
+    },
+    {
+      "name": "Newbury",
+      "kind": "town",
+      "gateway": false,
+      "pop2020": 6716,
+      "site": "https://www.townofnewbury.org",
+      "reachable": true,
+      "robots": "parsed",
+      "platforms": [
+        "CivicPlus / CivicEngage",
+        "BoardDocs"
+      ],
+      "noticePages": [
+        {
+          "label": "Agendas & Minutes",
+          "url": "https://www.newburyma.gov/AgendaCenter",
+          "score": 28
+        },
+        {
+          "label": "10",
+          "url": "https://www.newburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=10&CID=25",
+          "score": 5
+        },
+        {
+          "label": "15",
+          "url": "https://www.newburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=15&CID=25",
+          "score": 5
+        },
+        {
+          "label": "16",
+          "url": "https://www.newburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=16&CID=25",
+          "score": 5
+        },
+        {
+          "label": "17",
+          "url": "https://www.newburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=17&CID=25",
+          "score": 5
+        }
+      ],
+      "joinable": [],
+      "streams": [
+        {
+          "kind": "youtube",
+          "url": "https://www.youtube.com/user/TheNewburyChannel"
+        }
+      ],
+      "bodies": [
+        "Agriculture Commission",
+        "Board of Assessors",
+        "Board of Fire Engineers",
+        "Board of Health",
+        "Border to Boston Trail Committee",
+        "Capital Planning Committee",
+        "Conservation Commission",
+        "Council on Aging",
+        "Cultural Council",
+        "Finance Committee",
+        "Fish Commissioner",
+        "Great Marsh Task Force",
+        "Historical Commission",
+        "Human Resources",
+        "Library",
+        "Local Historic District Study Committee",
+        "Master Plan Committee",
+        "Media Advisory Committee",
+        "Municipal Building Committee",
+        "Municipal Vulnerability Task Force",
+        "Open Space Committee",
+        "Planning Board",
+        "Recreation Committee",
+        "Select Board",
+        "Shellfish Constable",
+        "State Elections",
+        "Stormwater Management",
+        "Town Clerk",
+        "Town Elections",
+        "Town Meeting",
+        "Tree Warden",
+        "Upper Green Advisory Committee",
+        "Zoning Board of Appeals"
+      ],
+      "notices": [
+        {
+          "title": "Triton District Communications Committee (DCC) Meeting",
+          "url": "https://www.newburyma.gov/Calendar.aspx?EID=4358",
+          "date": "2026-09-10",
+          "start_time": "18:30",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "<p>Hosted by Triton Regional School District</p> - 112 Elm St Byfield MA 01922",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Newbury Historical Commission Meeting",
+          "url": "https://www.newburyma.gov/Calendar.aspx?EID=4371",
+          "date": "2026-09-10",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "- Newbury Fireman's Hall 3 Morgan Ave Newbury MA 01951",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Library Board of Trustees",
+          "url": "https://www.newburyma.gov/Calendar.aspx?EID=4374",
+          "date": "2026-09-15",
+          "start_time": "17:00",
+          "timezone": "America/New_York",
+          "weekday": 2,
+          "location": "- 0 Lunt Street Byfield MA 01922",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Conservation Commission Meeting",
+          "url": "https://www.newburyma.gov/Calendar.aspx?EID=4375",
+          "date": "2026-09-15",
+          "start_time": "18:00",
+          "timezone": "America/New_York",
+          "weekday": 2,
+          "location": "-",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "ANNOUNCEMENT - Newbury Open Space Public Meeting #2",
+          "url": "https://www.newburyma.gov/Calendar.aspx?EID=4373",
+          "date": "2026-09-15",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 2,
+          "location": "<p style=\"box-sizing: border-box; --categoryColor: #31312a; margin-top: 0px; margin-bottom: 1rem; font-style: normal; font-weight: 400; color: rgb(24, 56, 29); font-family: Montserrat; font-size: 16px; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(255, 255, 255); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;\">Location: <u>Newbury Council on Aging, 12 Kent Way, Byfield</u>, first door on the right after you enter the building</p> - Byfield MA 01922",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "CANCELLED - Newbury Planning Board Meeting via Zoom",
+          "url": "https://www.newburyma.gov/Calendar.aspx?EID=4021",
+          "date": "2026-09-16",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 3,
+          "location": "- Byfield MA 01922",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Newbury Town Library's 100th Anniversary",
+          "url": "https://www.newburyma.gov/Calendar.aspx?EID=4346",
+          "date": "2026-09-19",
+          "start_time": "10:00",
+          "timezone": "America/New_York",
+          "weekday": 6,
+          "location": "- 0 Lunt Street Byfield MA 01922",
+          "joinable": [],
+          "detail_source": "ics"
+        }
+      ],
+      "pagesFetched": 21,
+      "notes": []
+    },
+    {
+      "name": "Rowley",
+      "kind": "town",
+      "gateway": false,
+      "pop2020": 6300,
+      "site": "https://www.townofrowley.net",
+      "reachable": false,
+      "robots": "parsed",
+      "platforms": [],
+      "noticePages": [],
+      "joinable": [],
+      "streams": [],
+      "bodies": [],
+      "notices": [],
+      "pagesFetched": 0,
+      "notes": [
+        "homepage unreachable: 403"
+      ]
+    },
+    {
+      "name": "Salisbury",
+      "kind": "town",
+      "gateway": false,
+      "pop2020": 9236,
+      "site": "https://www.salisburyma.gov",
+      "reachable": true,
+      "robots": "parsed",
+      "platforms": [
+        "CivicPlus / CivicEngage"
+      ],
+      "noticePages": [
+        {
+          "label": "Minutes & Agendas",
+          "url": "https://www.salisburyma.gov/agendacenter",
+          "score": 19
+        },
+        {
+          "label": "10",
+          "url": "https://www.salisburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=10&CID=23",
+          "score": 5
+        },
+        {
+          "label": "15",
+          "url": "https://www.salisburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=15&CID=23",
+          "score": 5
+        },
+        {
+          "label": "16",
+          "url": "https://www.salisburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=16&CID=23",
+          "score": 5
+        },
+        {
+          "label": "23",
+          "url": "https://www.salisburyma.gov/calendar.aspx?view=list&year=2026&month=9&day=23&CID=23",
+          "score": 5
+        }
+      ],
+      "joinable": [],
+      "streams": [],
+      "bodies": [
+        "Affordable Housing Trust",
+        "Agricultural Commission",
+        "Board of Assessors",
+        "Board of Health",
+        "Board of Registrars",
+        "Board of Selectmen",
+        "Bylaw Review Committee",
+        "Cemetery Commission",
+        "Charter Review Committee",
+        "Citizens Advisory Committee",
+        "Community Development Block Grant Progra",
+        "Conservation Commission",
+        "Council on Aging",
+        "Cultural Council",
+        "Harbor Commission",
+        "Health Department",
+        "Historical Commission",
+        "Home",
+        "Housing Authority",
+        "Inspection Services",
+        "Library Trustees",
+        "Master Plan Committee",
+        "Parks and Recreation Commission",
+        "Planning Board",
+        "Planning and Development",
+        "Rings Island Neighborhood Preservation D",
+        "Town Clerk",
+        "Town Meeting",
+        "Warrant Advisory Committee",
+        "Zoning Board of Appeals"
+      ],
+      "notices": [
+        {
+          "title": "Salisbury Housing Authority Meeting",
+          "url": "https://www.salisburyma.gov/Calendar.aspx?EID=809",
+          "date": "2026-09-10",
+          "start_time": "17:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "- 23 Beach Road Salisbury MA 01952",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Salisbury Historical Commission Meeting",
+          "url": "https://www.salisburyma.gov/Calendar.aspx?EID=813",
+          "date": "2026-09-15",
+          "start_time": "14:30",
+          "timezone": "America/New_York",
+          "weekday": 2,
+          "location": "- Pike School House Salisbury MA 01952",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Conservation Commission Meeting",
+          "url": "https://www.salisburyma.gov/Calendar.aspx?EID=715",
+          "date": "2026-09-16",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 3,
+          "location": "- 5 Beach Road Salisbury MA 01952",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Affordable Housing Trust Regular Meeting No Agenda (PDF)",
+          "url": "https://www.salisburyma.gov/AgendaCenter/ViewFile/Agenda/_06012026-287?html=true",
+          "date": "2026-06-01",
+          "start_time": null,
+          "timezone": null,
+          "weekday": null,
+          "location": null,
+          "joinable": [],
+          "detail_source": "html"
+        }
+      ],
+      "pagesFetched": 14,
+      "notes": []
+    },
+    {
+      "name": "West Newbury",
+      "kind": "town",
+      "gateway": false,
+      "pop2020": 4574,
+      "site": "https://www.wnewbury.org",
+      "reachable": true,
+      "robots": "parsed",
+      "platforms": [
+        "CivicPlus / CivicEngage"
+      ],
+      "noticePages": [
+        {
+          "label": "10",
+          "url": "https://www.wnewbury.org/calendar.aspx?view=list&year=2026&month=9&day=10&CID=23",
+          "score": 5
+        },
+        {
+          "label": "14",
+          "url": "https://www.wnewbury.org/calendar.aspx?view=list&year=2026&month=9&day=14&CID=23",
+          "score": 5
+        },
+        {
+          "label": "15",
+          "url": "https://www.wnewbury.org/calendar.aspx?view=list&year=2026&month=9&day=15&CID=23",
+          "score": 5
+        },
+        {
+          "label": "16",
+          "url": "https://www.wnewbury.org/calendar.aspx?view=list&year=2026&month=9&day=16&CID=23",
+          "score": 5
+        },
+        {
+          "label": "24",
+          "url": "https://www.wnewbury.org/calendar.aspx?view=list&year=2026&month=9&day=24&CID=23",
+          "score": 5
+        }
+      ],
+      "joinable": [],
+      "streams": [
+        {
+          "kind": "youtube",
+          "url": "https://www.youtube.com/channel/UCH--JeWVesTtC3Yay52pzqQ"
+        }
+      ],
+      "bodies": [
+        "Affordable Housing Trust",
+        "Agricultural Committee",
+        "Bicentennial Committee",
+        "Board of Assessors",
+        "Board of Fire Engineers",
+        "Board of Health",
+        "Board of Registrars",
+        "Board of Water Commissioners",
+        "Cable Advisory Committee",
+        "Capital Improvements Committee",
+        "Carr Post Building Committee",
+        "Climate Change Resiliency Committee",
+        "Community Center Committee",
+        "Community Preservation Committee",
+        "Conservation Commission",
+        "Council on Aging",
+        "Cultural Council",
+        "Energy and Sustainability Committee",
+        "Finance Committee",
+        "GAR Library Board of Trustees",
+        "Harbor Committee",
+        "Historic District Commission",
+        "Historical Commission",
+        "Housing Authority",
+        "Hunting Working Group",
+        "Investment Policy Committee",
+        "Library Expansion Feasibility Study Work",
+        "MBTA Zoning Location Working Group",
+        "Mill Pond Committee",
+        "Open Space Committee",
+        "Parks Recreation Commission",
+        "Pentucket School Committee",
+        "Personnel Advisory Committee",
+        "Pipestave Parking Circulation and Land U",
+        "Planning Board",
+        "Regional NonTown Committees",
+        "River Access Committee",
+        "Select Board",
+        "Town Clerk",
+        "Town Governance Committee",
+        "Tree Committee",
+        "Veterans Agent",
+        "Whittier Regional Agreement Amendment Co",
+        "Zoning Board of Appeals"
+      ],
+      "notices": [
+        {
+          "title": "Water Department",
+          "url": "https://www.wnewbury.org/Calendar.aspx?EID=929",
+          "date": "2026-09-10",
+          "start_time": "10:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "- West Newbury MA 1985",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Select Board",
+          "url": "https://www.wnewbury.org/Calendar.aspx?EID=933",
+          "date": "2026-09-10",
+          "start_time": "18:00",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "- West Newbury MA 1985",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Conservation Commission",
+          "url": "https://www.wnewbury.org/Calendar.aspx?EID=934",
+          "date": "2026-09-14",
+          "start_time": "19:00",
+          "timezone": "America/New_York",
+          "weekday": 1,
+          "location": "- West Newbury MA 1985",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Merrimack Valley Workforce Board",
+          "url": "https://www.wnewbury.org/Calendar.aspx?EID=931",
+          "date": "2026-09-15",
+          "start_time": "08:30",
+          "timezone": "America/New_York",
+          "weekday": 2,
+          "location": "- West Newbury MA 1985",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Tree Committee",
+          "url": "https://www.wnewbury.org/Calendar.aspx?EID=928",
+          "date": "2026-09-16",
+          "start_time": "19:30",
+          "timezone": "America/New_York",
+          "weekday": 3,
+          "location": "- West Newbury MA 1985",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Select Board",
+          "url": "https://www.wnewbury.org/Calendar.aspx?EID=909",
+          "date": "2026-09-24",
+          "start_time": "17:30",
+          "timezone": "America/New_York",
+          "weekday": 4,
+          "location": "- West Newbury MA 1985",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Open Air Sculpture @Maudslay State Park: September 20th-October 16th",
+          "url": "https://www.wnewbury.org/Calendar.aspx?EID=905",
+          "date": "2026-09-20",
+          "start_time": null,
+          "timezone": null,
+          "weekday": 0,
+          "location": "- West Newbury MA 1985",
+          "joinable": [],
+          "detail_source": "ics"
+        },
+        {
+          "title": "Newburyport Documentary Film Festival: September 26th-Septemebr 28th",
+          "url": "https://www.wnewbury.org/Calendar.aspx?EID=904",
+          "date": "2026-09-26",
+          "start_time": null,
+          "timezone": null,
+          "weekday": 6,
+          "location": "- West Newbury MA 1985",
+          "joinable": [],
+          "detail_source": "ics"
+        }
+      ],
+      "pagesFetched": 23,
+      "notes": []
+    }
+  ]
+}

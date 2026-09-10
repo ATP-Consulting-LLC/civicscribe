@@ -1,0 +1,22 @@
+{
+  "region": "Merrimack Valley",
+  "note": "The 15 Merrimack Valley Planning Commission communities plus Lowell, the adjacent Gateway City. Official sites verified by hand 2026-09-10; re-verify before trusting a stale row.",
+  "municipalities": [
+    { "name": "Lawrence",       "kind": "city", "site": "https://www.cityoflawrence.com",   "gateway": true,  "pop2020": 89143 },
+    { "name": "Lowell",         "kind": "city", "site": "https://www.lowellma.gov",         "gateway": true,  "pop2020": 115554 },
+    { "name": "Haverhill",      "kind": "city", "site": "https://www.haverhillma.gov",      "gateway": true,  "pop2020": 67787 },
+    { "name": "Methuen",        "kind": "city", "site": "https://www.methuen.gov",          "gateway": true,  "pop2020": 53059 },
+    { "name": "Newburyport",    "kind": "city", "site": "https://www.cityofnewburyport.com","gateway": false, "pop2020": 18289 },
+    { "name": "Amesbury",       "kind": "city", "site": "https://www.amesburyma.gov",       "gateway": false, "pop2020": 17366 },
+    { "name": "Andover",        "kind": "town", "site": "https://andoverma.gov",            "gateway": false, "pop2020": 36569 },
+    { "name": "North Andover",  "kind": "town", "site": "https://www.northandoverma.gov",   "gateway": false, "pop2020": 30915 },
+    { "name": "Boxford",        "kind": "town", "site": "https://www.town.boxford.ma.us",   "gateway": false, "pop2020": 8467 },
+    { "name": "Georgetown",     "kind": "town", "site": "https://www.georgetownma.gov",     "gateway": false, "pop2020": 8557 },
+    { "name": "Groveland",      "kind": "town", "site": "https://www.grovelandma.com",      "gateway": false, "pop2020": 6819 },
+    { "name": "Merrimac",       "kind": "town", "site": "https://www.merrimac01860.info",   "gateway": false, "pop2020": 6743 },
+    { "name": "Newbury",        "kind": "town", "site": "https://www.townofnewbury.org",    "gateway": false, "pop2020": 6716 },
+    { "name": "Rowley",         "kind": "town", "site": "https://www.townofrowley.net",     "gateway": false, "pop2020": 6300 },
+    { "name": "Salisbury",      "kind": "town", "site": "https://www.salisburyma.gov",      "gateway": false, "pop2020": 9236 },
+    { "name": "West Newbury",   "kind": "town", "site": "https://www.wnewbury.org",         "gateway": false, "pop2020": 4574 }
+  ]
+}
