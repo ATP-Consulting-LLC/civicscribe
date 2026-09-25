@@ -11,6 +11,7 @@
 
 import type { Metadata } from "next";
 import type { Meeting, Summary } from "@/lib/types";
+import { OG_IMAGE } from "@/lib/site";
 
 /** Max length for a social-card description (OG/Twitter render ~160-200 chars). */
 const MAX_DESCRIPTION = 200;
@@ -73,11 +74,15 @@ export function buildMeetingMetadata(
       type: "article",
       url,
       siteName: "CivicScribe",
+      // A route's openGraph replaces the layout's rather than merging, so the
+      // shared card is repeated here or a shared meeting link has no image.
+      images: [OG_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title: meeting.title,
       description,
+      images: [{ url: OG_IMAGE.url, alt: OG_IMAGE.alt }],
     },
   };
 }
