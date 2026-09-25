@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import SiteNav from "@/components/dashboard/SiteNav";
 import StaffSidebar from "@/components/dashboard/StaffSidebar";
-import { getConfig } from "@/lib/config";
+import { OG_IMAGE, SITE_URL } from "@/lib/site";
 import { isStaff } from "@/lib/auth/server";
 import "./globals.css";
 
@@ -22,11 +22,13 @@ const SITE_DESCRIPTION =
   "We record your city's public meetings. We turn them into text you can search and read.";
 
 // Site-wide metadata. metadataBase makes per-page relative OG/canonical URLs
-// absolute; it comes from APP_BASE_URL (config.baseUrl) and falls back to
-// localhost in dev. The defaults below are inherited by every page unless a
-// route's generateMetadata overrides them.
+// absolute on the live domain (SITE_URL), so link cards never carry a relative
+// or localhost og:image. og:url "./" resolves against each request's own path,
+// so a page that inherits these defaults advertises its own address, not "/".
+// The defaults below are inherited by every page unless a route's
+// generateMetadata overrides them.
 export const metadata: Metadata = {
-  metadataBase: new URL(getConfig().baseUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_NAME,
     template: `%s · ${SITE_NAME}`,
@@ -39,11 +41,14 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
+    url: "./",
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
+    images: [{ url: OG_IMAGE.url, alt: OG_IMAGE.alt }],
   },
 };
 
