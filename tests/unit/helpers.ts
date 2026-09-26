@@ -15,9 +15,14 @@ export async function makeTempDataDir(): Promise<string> {
   );
 }
 
-/** Best-effort recursive cleanup of a temp dataDir. */
+/** Best-effort recursive cleanup of a temp dataDir.
+ *
+ *  Retries because a route may still be writing when the test ends: the live
+ *  poll fires maybeRefreshCatchUp() without awaiting it, and its persist()
+ *  (temp file + rename) can land mid-rm. On Windows that surfaces as
+ *  ENOTEMPTY/EBUSY; rm's own maxRetries backs off until the write settles. */
 export async function cleanupDataDir(dir: string): Promise<void> {
-  await rm(dir, { recursive: true, force: true });
+  await rm(dir, { recursive: true, force: true, maxRetries: 10, retryDelay: 50 });
 }
 
 /** Fully-populated AppConfig for constructing real providers in tests. */
