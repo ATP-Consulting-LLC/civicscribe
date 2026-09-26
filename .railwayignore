@@ -15,4 +15,6 @@ test-results
 
 # The desktop recorder is a separate Electron package that runs on an operator's
 # machine. It must never enter the server build (it would drag Electron in).
-recorder
+# Anchored to the root: a bare `recorder` matches at any depth and would also
+# strip src/app/api/recorder, the server routes the recorder talks to.
+/recorder
